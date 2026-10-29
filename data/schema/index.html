@@ -1410,8 +1410,8 @@
 </tr>
 </tbody>
 </table>
-<p>0002曾创建token_rank_snapshots并保存排名/市值；0003已删该表及tokens的相关列。未来edges、entities、entity_members、watchlist、reports等仍是设计。依据：<a href="https://github.com/Arealtxh/AITrade/blob/af8543838893ef214bd45e558ebe855acb657149/docs/ADR.md#L128">ADR-018</a>。</p>
-<p><a href="../../reference/schema/">全部字段自动参考</a> · <a href="https://github.com/Arealtxh/AITrade/blob/af8543838893ef214bd45e558ebe855acb657149/aitrade/db/models.py">模型源码</a> · <a href="https://github.com/Arealtxh/AITrade/blob/af8543838893ef214bd45e558ebe855acb657149/migrations/versions/0003_drop_rank.py">0003删除排名</a> · <a href="https://github.com/Arealtxh/AITrade/blob/af8543838893ef214bd45e558ebe855acb657149/migrations/versions/0006_holders_labels.py">0006</a></p>
+<p>0002曾创建token_rank_snapshots并保存排名/市值；0003已删该表及tokens的相关列。未来edges、entities、entity_members、watchlist、reports等仍是设计。依据：<a href="https://github.com/Arealtxh/AITrade/blob/9b2aa6dd37b26913e84beb5b38b4136255fa1fd1/docs/ADR.md#L128">ADR-018</a>。</p>
+<p><a href="../../reference/schema/">全部字段自动参考</a> · <a href="https://github.com/Arealtxh/AITrade/blob/9b2aa6dd37b26913e84beb5b38b4136255fa1fd1/aitrade/db/models.py">模型源码</a> · <a href="https://github.com/Arealtxh/AITrade/blob/9b2aa6dd37b26913e84beb5b38b4136255fa1fd1/migrations/versions/0003_drop_rank.py">0003删除排名</a> · <a href="https://github.com/Arealtxh/AITrade/blob/9b2aa6dd37b26913e84beb5b38b4136255fa1fd1/migrations/versions/0006_holders_labels.py">0006</a></p>
 <h2 id="_3">关系图：只画真实外键<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <p>下面连线来自当前模型/迁移中的数据库FK；“同一个node_id字符串”不自动等于有FK约束。token_contracts.ucid允许为空，因此合约可暂时没有对应代币。</p>
 <pre class="mermaid"><code>---
@@ -1437,7 +1437,7 @@ erDiagram
 <li>标签主键包含node_id、类别和来源，保留不同来源；人工唯一当前选择通过应用事务协议维护，并非已有数据库partial unique索引。</li>
 <li>不为建文档自动迁移或修正式历史数据。</li>
 </ul>
-<p>依据：<a href="https://github.com/Arealtxh/AITrade/blob/af8543838893ef214bd45e558ebe855acb657149/docs/ADR.md#L18">ADR-005</a>、<a href="https://github.com/Arealtxh/AITrade/blob/af8543838893ef214bd45e558ebe855acb657149/docs/ADR.md#L27">ADR-008</a>、<a href="https://github.com/Arealtxh/AITrade/blob/af8543838893ef214bd45e558ebe855acb657149/docs/ADR.md#L385">ADR-039</a>、<a href="https://github.com/Arealtxh/AITrade/blob/af8543838893ef214bd45e558ebe855acb657149/docs/ADR.md#L1142">ADR-136</a>；验证：<a href="https://github.com/Arealtxh/AITrade/blob/af8543838893ef214bd45e558ebe855acb657149/tests/integration/test_m3_storage.py">M3持久化测试</a>。</p>
+<p>依据：<a href="https://github.com/Arealtxh/AITrade/blob/9b2aa6dd37b26913e84beb5b38b4136255fa1fd1/docs/ADR.md#L18">ADR-005</a>、<a href="https://github.com/Arealtxh/AITrade/blob/9b2aa6dd37b26913e84beb5b38b4136255fa1fd1/docs/ADR.md#L27">ADR-008</a>、<a href="https://github.com/Arealtxh/AITrade/blob/9b2aa6dd37b26913e84beb5b38b4136255fa1fd1/docs/ADR.md#L385">ADR-039</a>、<a href="https://github.com/Arealtxh/AITrade/blob/9b2aa6dd37b26913e84beb5b38b4136255fa1fd1/docs/ADR.md#L1142">ADR-136</a>；验证：<a href="https://github.com/Arealtxh/AITrade/blob/9b2aa6dd37b26913e84beb5b38b4136255fa1fd1/tests/integration/test_m3_storage.py">M3持久化测试</a>。</p>
 
 
 

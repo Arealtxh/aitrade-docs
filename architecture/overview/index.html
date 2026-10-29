@@ -1425,7 +1425,7 @@
 </table>
 <h2 id="_4">为什么按层拆分<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <p>来源适配器不写业务库；命令与任务复用services；分析依赖路由协议，不直接散落HTTP请求；表和统一模型减少不同链/来源字段差异。当前使用Python＋PostgreSQL单机，队列也存PG，避免额外Redis/Celery运维。</p>
-<p>未来重量级关联信号选择本机SQL，旧Dune方案已被替代，不能按历史ADR-004重新接入。依据：<a href="https://github.com/Arealtxh/AITrade/blob/af8543838893ef214bd45e558ebe855acb657149/docs/ADR.md#L5">ADR-001</a>、<a href="https://github.com/Arealtxh/AITrade/blob/af8543838893ef214bd45e558ebe855acb657149/docs/ADR.md#L8">ADR-002</a>、<a href="https://github.com/Arealtxh/AITrade/blob/af8543838893ef214bd45e558ebe855acb657149/docs/ADR.md#L21">ADR-006</a>、<a href="https://github.com/Arealtxh/AITrade/blob/af8543838893ef214bd45e558ebe855acb657149/docs/ADR.md#L67">ADR-014</a>。</p>
+<p>未来重量级关联信号选择本机SQL，旧Dune方案已被替代，不能按历史ADR-004重新接入。依据：<a href="https://github.com/Arealtxh/AITrade/blob/9b2aa6dd37b26913e84beb5b38b4136255fa1fd1/docs/ADR.md#L5">ADR-001</a>、<a href="https://github.com/Arealtxh/AITrade/blob/9b2aa6dd37b26913e84beb5b38b4136255fa1fd1/docs/ADR.md#L8">ADR-002</a>、<a href="https://github.com/Arealtxh/AITrade/blob/9b2aa6dd37b26913e84beb5b38b4136255fa1fd1/docs/ADR.md#L21">ADR-006</a>、<a href="https://github.com/Arealtxh/AITrade/blob/9b2aa6dd37b26913e84beb5b38b4136255fa1fd1/docs/ADR.md#L67">ADR-014</a>。</p>
 <p><a href="../code-map/">模块与主要测试地图</a> · <a href="../../reference/python/">Python签名参考</a> · <a href="../../data/schema/">数据模型</a></p>
 
 
