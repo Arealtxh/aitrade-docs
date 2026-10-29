@@ -1,0 +1,2460 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="从如何使用，到如何实现，再到设计依据">
+      
+      
+      
+        <link rel="canonical" href="https://arealtxh.github.io/aitrade-docs/reference/cli/">
+      
+      
+      
+        <link rel="prev" href="../interfaces/">
+      
+      
+        <link rel="next" href="../python/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.0.73">
+    
+    
+      
+        <title>CLI完整参考 - AITrade 技术手册</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.4ab2de0c.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.b60ce83d.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/handbook.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-hidden="true"></label>
+    <div data-md-component="skip">
+      <a href="#__skip" class="md-skip">
+        跳转至
+      </a>
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="AITrade 技术手册" class="md-header__button md-logo" aria-label="AITrade 技术手册" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+      <span class="md-visually-hidden">导航栏</span>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AITrade 技术手册
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              CLI完整参考
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="cyan"  aria-label="切换深色"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换深色" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="cyan"  aria-label="切换浅色"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换浅色" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+          <span class="md-visually-hidden">查找</span>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="查找">
+  <button type="button" class="md-search__button">
+    查找
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  项目全貌
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../usage/start/" class="md-tabs__link">
+          
+  
+  使用指南
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+      
+    
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../interfaces/" class="md-tabs__link">
+          
+  
+  命令与接口
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../data/schema/" class="md-tabs__link">
+          
+  
+  数据说明
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../architecture/overview/" class="md-tabs__link">
+          
+  
+  架构与代码地图
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../development/operations/" class="md-tabs__link">
+          
+  
+  开发与运维
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../history/" class="md-tabs__link">
+        
+  
+  历史与决策
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="AITrade 技术手册" class="md-nav__button md-logo" aria-label="AITrade 技术手册" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
+
+    </a>
+    AITrade 技术手册
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  项目全貌
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  使用指南
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  使用指南
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../usage/start/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  从这里开始
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../usage/tokens/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  代币与UCID
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../usage/holders/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  持仓快照
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../usage/labels/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  地址标签
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../usage/jobs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  任务与状态
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../usage/glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  术语与常见问题
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  命令与接口
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+            <label class="md-nav__title" for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  命令与接口
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interfaces/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  接口边界与退出码
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  CLI完整参考
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  CLI完整参考
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#global" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        全局选项
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#db-upgrade" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        db upgrade
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#status" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        status
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#probe" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        probe
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jobs-enqueue" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        jobs enqueue
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jobs-run" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        jobs run
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jobs-retry" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        jobs retry
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jobs-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        jobs list
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tokens-sync" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        tokens sync
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tokens-show" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        tokens show
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tokens-resolve" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        tokens resolve
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tokens-conflicts" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        tokens conflicts
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tokens-stats" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        tokens stats
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#labels-import" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        labels import
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#labels-add" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        labels add
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#labels-show" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        labels show
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#labels-heuristic" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        labels heuristic
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#holders-diff" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        holders diff
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#holders-show" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        holders show
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#db-prune" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        db prune
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Python业务接口
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scripts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  脚本与辅助文件
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  数据说明
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  数据说明
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data/schema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  当前数据模型
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  字段自动参考
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data/queries/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  只读SQL与快照
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  架构与代码地图
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_5">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  架构与代码地图
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  架构与调用流程
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/code-map/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  主要源码与测试
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  开发与运维
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_6">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  开发与运维
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../development/operations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  配置与操作边界
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../development/workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  测试与自动Review
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../development/docs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  如何维护本站
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../history/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  历史与决策
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                    
+                    
+                    
+                      
+                    
+                    
+                      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                      <div class="md-sidebar-button__wrapper">
+                        <label class="md-sidebar-button" for="__toc"></label>
+                      </div>
+                    
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#global" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        全局选项
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#db-upgrade" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        db upgrade
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#status" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        status
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#probe" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        probe
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jobs-enqueue" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        jobs enqueue
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jobs-run" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        jobs run
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jobs-retry" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        jobs retry
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jobs-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        jobs list
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tokens-sync" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        tokens sync
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tokens-show" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        tokens show
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tokens-resolve" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        tokens resolve
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tokens-conflicts" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        tokens conflicts
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tokens-stats" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        tokens stats
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#labels-import" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        labels import
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#labels-add" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        labels add
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#labels-show" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        labels show
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#labels-heuristic" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        labels heuristic
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#holders-diff" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        holders diff
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#holders-show" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        holders show
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#db-prune" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        db prune
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                <a id="__skip" tabindex="-1"></a>
+                
+                  
+
+
+<h1 id="cli">CLI 完整参考<a class="headerlink" href="#cli" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>参数/别名/默认值从当前CLI源码自动提取；用途与副作用由人工核对。自动参考不运行命令。</p>
+</blockquote>
+<h2 id="global">全局选项<a class="headerlink" href="#global" title="Permanent link">&para;</a></h2>
+<p>全局选项放在子命令之前；<code>--help</code>由Typer提供。</p>
+<table>
+<thead>
+<tr>
+<th>参数/选项</th>
+<th>类型</th>
+<th>默认</th>
+<th>源码帮助/约束</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>--config</td>
+<td><code>Path</code></td>
+<td><code>Path('config.yaml')</code></td>
+<td>配置文件路径</td>
+</tr>
+<tr>
+<td>--log-level</td>
+<td><code>str</code></td>
+<td><code>'info'</code></td>
+<td>debug | info | warning</td>
+</tr>
+<tr>
+<td>--json</td>
+<td><code>bool</code></td>
+<td><code>False</code></td>
+<td>机器可读输出</td>
+</tr>
+<tr>
+<td>--version</td>
+<td><code>bool</code></td>
+<td><code>False</code></td>
+<td>显示版本</td>
+</tr>
+</tbody>
+</table>
+<h2 id="db-upgrade">db upgrade<a class="headerlink" href="#db-upgrade" title="Permanent link">&para;</a></h2>
+<p>执行显式Alembic升级；--sql仅输出SQL。</p>
+<p><strong>副作用：</strong> 默认写目标库结构，必须单独授权；--sql不执行SQL但仍需有效配置。</p>
+<p><strong>返回内容：</strong> 迁移日志；非--sql成功时JSON包含command/revision/status。</p>
+<p><a href="../../development/operations/">使用指南</a> · <a href="https://github.com/Arealtxh/AITrade/blob/af8543838893ef214bd45e558ebe855acb657149/aitrade/cli.py#L164">实现源码</a></p>
+<table>
+<thead>
+<tr>
+<th>参数/选项</th>
+<th>类型</th>
+<th>默认</th>
+<th>源码帮助/约束</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>revision</td>
+<td><code>str</code></td>
+<td><code>'head'</code></td>
+<td>目标版本，默认 head</td>
+</tr>
+<tr>
+<td>--sql</td>
+<td><code>bool</code></td>
+<td><code>False</code></td>
+<td>只打印 SQL，不执行</td>
+</tr>
+</tbody>
+</table>
+<h2 id="status">status<a class="headerlink" href="#status" title="Permanent link">&para;</a></h2>
+<p>查看队列汇总、错误和额度快照。</p>
+<p><strong>副作用：</strong> 读取数据库，不调用来源。</p>
+<p><strong>返回内容：</strong> jobs、top_errors、quota或终端表格。</p>
+<p><a href="../../usage/jobs/">使用指南</a> · <a href="https://github.com/Arealtxh/AITrade/blob/af8543838893ef214bd45e558ebe855acb657149/aitrade/cli.py#L221">实现源码</a></p>
+<table>
+<thead>
+<tr>
+<th>参数/选项</th>
+<th>类型</th>
+<th>默认</th>
+<th>源码帮助/约束</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>--kind</td>
+<td><code>str \| None</code></td>
+<td><code>None</code></td>
+<td>只看某个 kind</td>
+</tr>
+</tbody>
+</table>
+<h2 id="probe">probe<a class="headerlink" href="#probe" title="Permanent link">&para;</a></h2>
+<p>显式探测来源能力，生成探针报告。</p>
+<p><strong>副作用：</strong> 外部请求/额度与本地报告写入；需确认范围，不是只读业务查看。</p>
+<p><strong>返回内容：</strong> 探针状态、报告路径；阻断项可返回4。</p>
+<p><a href="../../development/operations/">使用指南</a> · <a href="https://github.com/Arealtxh/AITrade/blob/af8543838893ef214bd45e558ebe855acb657149/aitrade/cli.py#L271">实现源码</a></p>
+<table>
+<thead>
+<tr>
+<th>参数/选项</th>
+<th>类型</th>
+<th>默认</th>
+<th>源码帮助/约束</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>--source</td>
+<td><code>str \| None</code></td>
+<td><code>None</code></td>
+<td>只跑某个数据源相关的探针（P1 编号或名称）</td>
+</tr>
+<tr>
+<td>--out</td>
+<td><code>Path \| None</code></td>
+<td><code>None</code></td>
+<td>报告输出路径，默认 reports/probe-<date>.md</td>
+</tr>
+</tbody>
+</table>
+<h2 id="jobs-enqueue">jobs enqueue<a class="headerlink" href="#jobs-enqueue" title="Permanent link">&para;</a></h2>
+<p>为deployer/holders/address_profile登记任务。</p>
+<p><strong>副作用：</strong> 写队列；--force重置可重跑任务，--with-funding扩大画像内容。</p>
+<p><strong>返回内容：</strong> kind/chain/ucids/enqueued/force。</p>
+<p><a href="../../usage/jobs/">使用指南</a> · <a href="https://github.com/Arealtxh/AITrade/blob/af8543838893ef214bd45e558ebe855acb657149/aitrade/cli.py#L327">实现源码</a></p>
+<table>
+<thead>
+<tr>
+<th>参数/选项</th>
+<th>类型</th>
+<th>默认</th>
+<th>源码帮助/约束</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>--kind</td>
+<td><code>str</code></td>
+<td><code>必填</code></td>
+<td>deployer | holders | address_profile</td>
+</tr>
+<tr>
+<td>--chain</td>
+<td><code>str \| None</code></td>
+<td><code>None</code></td>
+<td>只选这条链</td>
+</tr>
+<tr>
+<td>--ucid</td>
+<td><code>list[int] \| None</code></td>
+<td><code>None</code></td>
+<td>只选这些 UCID，可重复；min=1</td>
+</tr>
+<tr>
+<td>--force</td>
+<td><code>bool</code></td>
+<td><code>False</code></td>
+<td>重置非 running 任务并重新解析</td>
+</tr>
+<tr>
+<td>--with-funding</td>
+<td><code>bool</code></td>
+<td><code>False</code></td>
+<td>address_profile额外查询首笔资金</td>
+</tr>
+</tbody>
+</table>
+<h2 id="jobs-run">jobs run<a class="headerlink" href="#jobs-run" title="Permanent link">&para;</a></h2>
+<p>启动worker处理已有任务。</p>
+<p><strong>副作用：</strong> 默认持续运行，可能联网、消耗额度、写业务及队列；须授权。</p>
+<p><strong>返回内容：</strong> worker/claimed/done/partial/requeued/failed/reaped/by_kind。</p>
+<p><a href="../../usage/jobs/">使用指南</a> · <a href="https://github.com/Arealtxh/AITrade/blob/af8543838893ef214bd45e558ebe855acb657149/aitrade/cli.py#L374">实现源码</a></p>
+<table>
+<thead>
+<tr>
+<th>参数/选项</th>
+<th>类型</th>
+<th>默认</th>
+<th>源码帮助/约束</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>--kind</td>
+<td><code>list[str] \| None</code></td>
+<td><code>None</code></td>
+<td>只跑这些 kind，可重复</td>
+</tr>
+<tr>
+<td>--concurrency</td>
+<td><code>int</code></td>
+<td><code>4</code></td>
+<td>并发槽位数；min=1</td>
+</tr>
+<tr>
+<td>--until-empty</td>
+<td><code>bool</code></td>
+<td><code>False</code></td>
+<td>队列空了就退出</td>
+</tr>
+<tr>
+<td>--max-minutes</td>
+<td><code>float \| None</code></td>
+<td><code>None</code></td>
+<td>最多跑多少分钟</td>
+</tr>
+<tr>
+<td>--no-reaper</td>
+<td><code>bool</code></td>
+<td><code>False</code></td>
+<td>不启动卡住任务的回收器</td>
+</tr>
+</tbody>
+</table>
+<h2 id="jobs-retry">jobs retry<a class="headerlink" href="#jobs-retry" title="Permanent link">&para;</a></h2>
+<p>将匹配状态任务重新入队。</p>
+<p><strong>副作用：</strong> 写队列，不能随意恢复历史成功任务或claim。</p>
+<p><strong>返回内容：</strong> kind/status/requeued。</p>
+<p><a href="../../usage/jobs/">使用指南</a> · <a href="https://github.com/Arealtxh/AITrade/blob/af8543838893ef214bd45e558ebe855acb657149/aitrade/cli.py#L422">实现源码</a></p>
+<table>
+<thead>
+<tr>
+<th>参数/选项</th>
+<th>类型</th>
+<th>默认</th>
+<th>源码帮助/约束</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>--kind</td>
+<td><code>str \| None</code></td>
+<td><code>None</code></td>
+<td>只看某个 kind</td>
+</tr>
+<tr>
+<td>--status</td>
+<td><code>str</code></td>
+<td><code>JobStatus.FAILED.value</code></td>
+<td>failed | partial | done</td>
+</tr>
+</tbody>
+</table>
+<h2 id="jobs-list">jobs list<a class="headerlink" href="#jobs-list" title="Permanent link">&para;</a></h2>
+<p>查看逐条任务。</p>
+<p><strong>副作用：</strong> 读数据库；默认limit=50。</p>
+<p><strong>返回内容：</strong> jobs列表，含id/kind/target_key/status/attempts/run_after/last_source/last_error。</p>
+<p><a href="../../usage/jobs/">使用指南</a> · <a href="https://github.com/Arealtxh/AITrade/blob/af8543838893ef214bd45e558ebe855acb657149/aitrade/cli.py#L448">实现源码</a></p>
+<table>
+<thead>
+<tr>
+<th>参数/选项</th>
+<th>类型</th>
+<th>默认</th>
+<th>源码帮助/约束</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>--kind</td>
+<td><code>str \| None</code></td>
+<td><code>None</code></td>
+<td>只看某个 kind</td>
+</tr>
+<tr>
+<td>--status</td>
+<td><code>str \| None</code></td>
+<td><code>None</code></td>
+<td>只看某个状态</td>
+</tr>
+<tr>
+<td>--limit</td>
+<td><code>int</code></td>
+<td><code>50</code></td>
+<td>min=1, max=1000</td>
+</tr>
+</tbody>
+</table>
+<h2 id="tokens-sync">tokens sync<a class="headerlink" href="#tokens-sync" title="Permanent link">&para;</a></h2>
+<p>同步全部有UCID的代币、合约与元数据。</p>
+<p><strong>副作用：</strong> 来源网络/免费额度/业务写入；小范围、刷新和补全均需确认。</p>
+<p><strong>返回内容：</strong> sync统计与stats；缺详情可返回4。</p>
+<p><a href="../../usage/tokens/">使用指南</a> · <a href="https://github.com/Arealtxh/AITrade/blob/af8543838893ef214bd45e558ebe855acb657149/aitrade/cli.py#L585">实现源码</a></p>
+<table>
+<thead>
+<tr>
+<th>参数/选项</th>
+<th>类型</th>
+<th>默认</th>
+<th>源码帮助/约束</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>--limit</td>
+<td><code>int \| None</code></td>
+<td><code>None</code></td>
+<td>最多取多少个 UCID（冒烟测试用，按 UCID 升序）；默认取 CMC 全部；min=1</td>
+</tr>
+<tr>
+<td>--with-coingecko</td>
+<td><code>bool</code></td>
+<td><code>False</code></td>
+<td>用 CoinGecko 补全缺失的合约（FR-04）</td>
+</tr>
+<tr>
+<td>--skip-info</td>
+<td><code>bool</code></td>
+<td><code>False</code></td>
+<td>只更新 UCID 列表，不取合约/tags/links（省 CMC credits）</td>
+</tr>
+<tr>
+<td>--refresh-info</td>
+<td><code>bool</code></td>
+<td><code>False</code></td>
+<td>强制重取全部详情（默认只取还没取过的，所以中途失败重跑会接着来）</td>
+</tr>
+</tbody>
+</table>
+<h2 id="tokens-show">tokens show<a class="headerlink" href="#tokens-show" title="Permanent link">&para;</a></h2>
+<p>按UCID读已有代币、合约、标签/链接与部署结果。</p>
+<p><strong>副作用：</strong> 读数据库，不自动采集。</p>
+<p><strong>返回内容：</strong> 代币详情字典；不存在返回非成功及说明。</p>
+<p><a href="../../usage/tokens/">使用指南</a> · <a href="https://github.com/Arealtxh/AITrade/blob/af8543838893ef214bd45e558ebe855acb657149/aitrade/cli.py#L635">实现源码</a></p>
+<table>
+<thead>
+<tr>
+<th>参数/选项</th>
+<th>类型</th>
+<th>默认</th>
+<th>源码帮助/约束</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ucid</td>
+<td><code>int</code></td>
+<td><code>必填</code></td>
+<td>CMC UCID</td>
+</tr>
+</tbody>
+</table>
+<h2 id="tokens-resolve">tokens resolve<a class="headerlink" href="#tokens-resolve" title="Permanent link">&para;</a></h2>
+<p>按链和合约反查UCID，可选手动登记。</p>
+<p><strong>副作用：</strong> 先读本地，未命中可联网/记额；--add在非本地来源时写手动合约。</p>
+<p><strong>返回内容：</strong> chain/address/ucid/source/stored；无UCID返回4。</p>
+<p><a href="../../usage/tokens/">使用指南</a> · <a href="https://github.com/Arealtxh/AITrade/blob/af8543838893ef214bd45e558ebe855acb657149/aitrade/cli.py#L681">实现源码</a></p>
+<table>
+<thead>
+<tr>
+<th>参数/选项</th>
+<th>类型</th>
+<th>默认</th>
+<th>源码帮助/约束</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>chain</td>
+<td><code>str</code></td>
+<td><code>必填</code></td>
+<td>链，例如 ethereum、bsc、solana</td>
+</tr>
+<tr>
+<td>contract</td>
+<td><code>str</code></td>
+<td><code>必填</code></td>
+<td>合约地址（EVM 不区分大小写）</td>
+</tr>
+<tr>
+<td>--add</td>
+<td><code>bool</code></td>
+<td><code>False</code></td>
+<td>查不到本地记录时，把它作为手动合约入库（FR-06）</td>
+</tr>
+</tbody>
+</table>
+<h2 id="tokens-conflicts">tokens conflicts<a class="headerlink" href="#tokens-conflicts" title="Permanent link">&para;</a></h2>
+<p>查看UCID与同地址合约的冲突。</p>
+<p><strong>副作用：</strong> 读数据库；可包含已解决项。</p>
+<p><strong>返回内容：</strong> conflicts列表。</p>
+<p><a href="../../usage/tokens/">使用指南</a> · <a href="https://github.com/Arealtxh/AITrade/blob/af8543838893ef214bd45e558ebe855acb657149/aitrade/cli.py#L720">实现源码</a></p>
+<table>
+<thead>
+<tr>
+<th>参数/选项</th>
+<th>类型</th>
+<th>默认</th>
+<th>源码帮助/约束</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>--all</td>
+<td><code>bool</code></td>
+<td><code>False</code></td>
+<td>连已处理的也列出来</td>
+</tr>
+</tbody>
+</table>
+<h2 id="tokens-stats">tokens stats<a class="headerlink" href="#tokens-stats" title="Permanent link">&para;</a></h2>
+<p>查看现有总体、原生币和链合约统计。</p>
+<p><strong>副作用：</strong> 读数据库，不刷新CMC集合。</p>
+<p><strong>返回内容：</strong> 总体与各链统计或表格。</p>
+<p><a href="../../usage/tokens/">使用指南</a> · <a href="https://github.com/Arealtxh/AITrade/blob/af8543838893ef214bd45e558ebe855acb657149/aitrade/cli.py#L754">实现源码</a></p>
+<table>
+<thead>
+<tr>
+<th>参数/选项</th>
+<th>类型</th>
+<th>默认</th>
+<th>源码帮助/约束</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="labels-import">labels import<a class="headerlink" href="#labels-import" title="Permanent link">&para;</a></h2>
+<p>导入完整验证的本地CSV或CMC交易所钱包标签。</p>
+<p><strong>副作用：</strong> 写标签；cmc_exchange还联网/记额，本地来源需path。</p>
+<p><strong>返回内容：</strong> source/imported；测试Fixture例为1，不代表正式库数量。</p>
+<p><a href="../../usage/labels/">使用指南</a> · <a href="https://github.com/Arealtxh/AITrade/blob/af8543838893ef214bd45e558ebe855acb657149/aitrade/cli.py#L776">实现源码</a></p>
+<table>
+<thead>
+<tr>
+<th>参数/选项</th>
+<th>类型</th>
+<th>默认</th>
+<th>源码帮助/约束</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>--source</td>
+<td><code>str</code></td>
+<td><code>必填</code></td>
+<td>etherscan_dump | spellbook | file | cmc_exchange</td>
+</tr>
+<tr>
+<td>--path</td>
+<td><code>Path \| None</code></td>
+<td><code>None</code></td>
+<td>exists=True, dir_okay=False</td>
+</tr>
+<tr>
+<td>--snapshot-date</td>
+<td><code>str \| None</code></td>
+<td><code>None</code></td>
+<td>YYYY-MM-DD</td>
+</tr>
+</tbody>
+</table>
+<h2 id="labels-add">labels add<a class="headerlink" href="#labels-add" title="Permanent link">&para;</a></h2>
+<p>新增或替换人工标签。</p>
+<p><strong>副作用：</strong> 写manual标签，遵循当前链身份和事务互斥。</p>
+<p><strong>返回内容：</strong> node_id/label_type/source；不代表自动证据或人工黄金验收。</p>
+<p><a href="../../usage/labels/">使用指南</a> · <a href="https://github.com/Arealtxh/AITrade/blob/af8543838893ef214bd45e558ebe855acb657149/aitrade/cli.py#L830">实现源码</a></p>
+<table>
+<thead>
+<tr>
+<th>参数/选项</th>
+<th>类型</th>
+<th>默认</th>
+<th>源码帮助/约束</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>chain</td>
+<td><code>str</code></td>
+<td><code>必填</code></td>
+<td>—</td>
+</tr>
+<tr>
+<td>address</td>
+<td><code>str</code></td>
+<td><code>必填</code></td>
+<td>—</td>
+</tr>
+<tr>
+<td>label_type</td>
+<td><code>str</code></td>
+<td><code>必填</code></td>
+<td>—</td>
+</tr>
+<tr>
+<td>--name</td>
+<td><code>str \| None</code></td>
+<td><code>None</code></td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<h2 id="labels-show">labels show<a class="headerlink" href="#labels-show" title="Permanent link">&para;</a></h2>
+<p>查看当前链标签、有效winner和排除结论。</p>
+<p><strong>副作用：</strong> 读数据库，不联网。</p>
+<p><strong>返回内容：</strong> node_id/labels/effective/excluded/requires_confirmation，直接JSON。</p>
+<p><a href="../../usage/labels/">使用指南</a> · <a href="https://github.com/Arealtxh/AITrade/blob/af8543838893ef214bd45e558ebe855acb657149/aitrade/cli.py#L868">实现源码</a></p>
+<table>
+<thead>
+<tr>
+<th>参数/选项</th>
+<th>类型</th>
+<th>默认</th>
+<th>源码帮助/约束</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>chain</td>
+<td><code>str</code></td>
+<td><code>必填</code></td>
+<td>—</td>
+</tr>
+<tr>
+<td>address</td>
+<td><code>str</code></td>
+<td><code>必填</code></td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<h2 id="labels-heuristic">labels heuristic<a class="headerlink" href="#labels-heuristic" title="Permanent link">&para;</a></h2>
+<p>依据已有计数生成待确认标签。</p>
+<p><strong>副作用：</strong> 默认写标签；只有显式--dry-run才不保存，不自动升级为人工事实。</p>
+<p><strong>返回内容：</strong> dry_run/requires_confirmation/labels，直接JSON。</p>
+<p><a href="../../usage/labels/">使用指南</a> · <a href="https://github.com/Arealtxh/AITrade/blob/af8543838893ef214bd45e558ebe855acb657149/aitrade/cli.py#L893">实现源码</a></p>
+<table>
+<thead>
+<tr>
+<th>参数/选项</th>
+<th>类型</th>
+<th>默认</th>
+<th>源码帮助/约束</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>--dry-run</td>
+<td><code>bool</code></td>
+<td><code>False</code></td>
+<td>—</td>
+</tr>
+<tr>
+<td>--counterparties</td>
+<td><code>int \| None</code></td>
+<td><code>None</code></td>
+<td>min=1</td>
+</tr>
+<tr>
+<td>--transactions</td>
+<td><code>int \| None</code></td>
+<td><code>None</code></td>
+<td>min=1</td>
+</tr>
+<tr>
+<td>--funded-nodes</td>
+<td><code>int \| None</code></td>
+<td><code>None</code></td>
+<td>min=1</td>
+</tr>
+</tbody>
+</table>
+<h2 id="holders-diff">holders diff<a class="headerlink" href="#holders-diff" title="Permanent link">&para;</a></h2>
+<p>比较同合约两个已存快照。</p>
+<p><strong>副作用：</strong> 读数据库；未同时入榜的余额差保持未知。</p>
+<p><strong>返回内容：</strong> before/after及rows等差异字段，直接JSON，以源码为准。</p>
+<p><a href="../../usage/holders/#diff">使用指南</a> · <a href="https://github.com/Arealtxh/AITrade/blob/af8543838893ef214bd45e558ebe855acb657149/aitrade/cli.py#L926">实现源码</a></p>
+<table>
+<thead>
+<tr>
+<th>参数/选项</th>
+<th>类型</th>
+<th>默认</th>
+<th>源码帮助/约束</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>before</td>
+<td><code>int</code></td>
+<td><code>必填</code></td>
+<td>—</td>
+</tr>
+<tr>
+<td>after</td>
+<td><code>int</code></td>
+<td><code>必填</code></td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<h2 id="holders-show">holders show<a class="headerlink" href="#holders-show" title="Permanent link">&para;</a></h2>
+<p>按UCID读取各合约最新已存快照。</p>
+<p><strong>副作用：</strong> 读数据库；不重新采集、不偷偷修正历史身份。</p>
+<p><strong>返回内容：</strong> ucid/snapshots，包含来源、status、taken_at与holders，直接JSON。</p>
+<p><a href="../../usage/holders/#query">使用指南</a> · <a href="https://github.com/Arealtxh/AITrade/blob/af8543838893ef214bd45e558ebe855acb657149/aitrade/cli.py#L943">实现源码</a></p>
+<table>
+<thead>
+<tr>
+<th>参数/选项</th>
+<th>类型</th>
+<th>默认</th>
+<th>源码帮助/约束</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ucid</td>
+<td><code>int</code></td>
+<td><code>必填</code></td>
+<td>min=1</td>
+</tr>
+</tbody>
+</table>
+<h2 id="db-prune">db prune<a class="headerlink" href="#db-prune" title="Permanent link">&para;</a></h2>
+<p>按保留数量删除旧持仓快照。</p>
+<p><strong>副作用：</strong> 删除业务历史，必须单独授权，不是只读查询。</p>
+<p><strong>返回内容：</strong> deleted_snapshots。</p>
+<p><a href="../../development/operations/">使用指南</a> · <a href="https://github.com/Arealtxh/AITrade/blob/af8543838893ef214bd45e558ebe855acb657149/aitrade/cli.py#L997">实现源码</a></p>
+<table>
+<thead>
+<tr>
+<th>参数/选项</th>
+<th>类型</th>
+<th>默认</th>
+<th>源码帮助/约束</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>--keep / --keep-snapshots</td>
+<td><code>int \| None</code></td>
+<td><code>None</code></td>
+<td>min=1</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-circle-arrow-up" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16 12-4-4-4 4M12 16V8"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://zensical.org/" target="_blank" rel="noopener">
+      Zensical
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog" role="status" aria-atomic="true">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      
+      
+        
+        
+      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["navigation.tabs","navigation.sections","navigation.top","content.code.copy","search.highlight"],"redirect":null,"search":"../../assets/javascripts/workers/search.c47bb847.min.js","tags":null,"translations":{"clipboard.copied":"已复制","clipboard.copy":"复制","clipboard.error":"Could not copy to clipboard","search.result.more.one":"在该页上还有 1 个符合条件的结果","search.result.more.other":"在该页上还有 # 个符合条件的结果","search.result.none":"没有找到符合条件的结果","search.result.one":"找到 1 个符合条件的结果","search.result.other":"# 个符合条件的结果","search.result.placeholder":"键入以开始搜索","search.result.term.missing":"缺少","select.version":"选择当前版本"},"version":null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.77dd0ce9.min.js"></script>
+      
+        <script src="../../assets/mermaid.tiny.js"></script>
+      
+    
+  </body>
+</html>

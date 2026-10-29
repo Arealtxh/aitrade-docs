@@ -1,0 +1,10 @@
+/* 中文长标题、生成签名和宽表只在所属容器内滚动，保持移动端页面宽度。 */
+:root { --md-text-font: system-ui, "Microsoft YaHei", "PingFang SC", sans-serif; }
+.md-typeset { line-height: 1.85; }
+.md-typeset h1 { font-weight: 700; }
+.md-typeset table:not([class]) { font-size: .74rem; }
+.md-typeset__table { max-width: 100%; }
+.md-typeset__scrollwrap { overflow-x: auto; }
+.md-typeset code { overflow-wrap: anywhere; }
+.md-typeset pre code { overflow-wrap: normal; }
+.md-typeset .mermaid { overflow-x: auto; }

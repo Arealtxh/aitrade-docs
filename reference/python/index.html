@@ -1,0 +1,2437 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="从如何使用，到如何实现，再到设计依据">
+      
+      
+      
+        <link rel="canonical" href="https://arealtxh.github.io/aitrade-docs/reference/python/">
+      
+      
+      
+        <link rel="prev" href="../cli/">
+      
+      
+        <link rel="next" href="../scripts/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.0.73">
+    
+    
+      
+        <title>Python业务接口 - AITrade 技术手册</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.4ab2de0c.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.b60ce83d.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/handbook.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-hidden="true"></label>
+    <div data-md-component="skip">
+      <a href="#__skip" class="md-skip">
+        跳转至
+      </a>
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="AITrade 技术手册" class="md-header__button md-logo" aria-label="AITrade 技术手册" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+      <span class="md-visually-hidden">导航栏</span>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AITrade 技术手册
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Python业务接口
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="cyan"  aria-label="切换深色"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换深色" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="cyan"  aria-label="切换浅色"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换浅色" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+          <span class="md-visually-hidden">查找</span>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="查找">
+  <button type="button" class="md-search__button">
+    查找
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  项目全貌
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../usage/start/" class="md-tabs__link">
+          
+  
+  使用指南
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+      
+    
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../interfaces/" class="md-tabs__link">
+          
+  
+  命令与接口
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../data/schema/" class="md-tabs__link">
+          
+  
+  数据说明
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../architecture/overview/" class="md-tabs__link">
+          
+  
+  架构与代码地图
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../development/operations/" class="md-tabs__link">
+          
+  
+  开发与运维
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../history/" class="md-tabs__link">
+        
+  
+  历史与决策
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="AITrade 技术手册" class="md-nav__button md-logo" aria-label="AITrade 技术手册" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
+
+    </a>
+    AITrade 技术手册
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  项目全貌
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  使用指南
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  使用指南
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../usage/start/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  从这里开始
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../usage/tokens/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  代币与UCID
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../usage/holders/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  持仓快照
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../usage/labels/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  地址标签
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../usage/jobs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  任务与状态
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../usage/glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  术语与常见问题
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  命令与接口
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+            <label class="md-nav__title" for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  命令与接口
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interfaces/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  接口边界与退出码
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cli/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  CLI完整参考
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Python业务接口
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Python业务接口
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tokenservice" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        TokenService
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deployerservice" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        DeployerService
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#holderservice" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        HolderService
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#labelservice" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        LabelService
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#addressprofileservice" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        AddressProfileService
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#profiletaskservice" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        ProfileTaskService
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fundingservice" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        FundingService
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        领域模型
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="领域模型">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#contractref" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        ContractRef
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tokeninfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        TokenInfo
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deployerresult" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        DeployerResult
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fundinginfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        FundingInfo
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#label" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Label
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#holderrow" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        HolderRow
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#holdersresult" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        HoldersResult
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#addressprofile" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        AddressProfile
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        项目异常
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scripts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  脚本与辅助文件
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  数据说明
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  数据说明
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data/schema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  当前数据模型
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  字段自动参考
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data/queries/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  只读SQL与快照
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  架构与代码地图
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_5">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  架构与代码地图
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  架构与调用流程
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/code-map/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  主要源码与测试
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  开发与运维
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_6">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  开发与运维
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../development/operations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  配置与操作边界
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../development/workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  测试与自动Review
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../development/docs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  如何维护本站
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../history/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  历史与决策
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                    
+                    
+                    
+                      
+                    
+                    
+                      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                      <div class="md-sidebar-button__wrapper">
+                        <label class="md-sidebar-button" for="__toc"></label>
+                      </div>
+                    
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tokenservice" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        TokenService
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deployerservice" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        DeployerService
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#holderservice" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        HolderService
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#labelservice" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        LabelService
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#addressprofileservice" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        AddressProfileService
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#profiletaskservice" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        ProfileTaskService
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fundingservice" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        FundingService
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        领域模型
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="领域模型">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#contractref" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        ContractRef
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tokeninfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        TokenInfo
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deployerresult" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        DeployerResult
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fundinginfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        FundingInfo
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#label" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Label
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#holderrow" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        HolderRow
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#holdersresult" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        HoldersResult
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#addressprofile" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        AddressProfile
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        项目异常
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                <a id="__skip" tabindex="-1"></a>
+                
+                  
+
+
+<h1 id="python">Python 业务接口<a class="headerlink" href="#python" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>下列为内部Python服务，不是HTTP端点或承诺稳定的外部SDK。类型与签名从源码提取；初始化须由调用方提供会话工厂/路由等依赖。</p>
+</blockquote>
+<p><a href="../../reference/interfaces/">使用边界与调用方式</a></p>
+<h2 id="tokenservice">TokenService<a class="headerlink" href="#tokenservice" title="Permanent link">&para;</a></h2>
+<p><a href="https://github.com/Arealtxh/AITrade/blob/af8543838893ef214bd45e558ebe855acb657149/aitrade/services/tokens.py#L104">源码</a></p>
+<table>
+<thead>
+<tr>
+<th>方法（async须await）</th>
+<th>签名</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sync</td>
+<td><code>async (self, limit: int \| None=None, *, with_coingecko: bool=False, fetch_info: bool=True, refresh_info: bool=False, progress: Progress \| None=None) → SyncStats</code></td>
+</tr>
+<tr>
+<td>add_manual</td>
+<td><code>async (self, chain: ChainId, address: str) → tuple[int \| None, bool]</code></td>
+</tr>
+<tr>
+<td>refresh_generic_links</td>
+<td><code>async (self) → int</code></td>
+</tr>
+<tr>
+<td>show</td>
+<td><code>async (self, ucid: int) → dict[str, Any] \| None</code></td>
+</tr>
+<tr>
+<td>resolve</td>
+<td><code>async (self, chain: ChainId, address: str) → tuple[int \| None, str \| None]</code></td>
+</tr>
+<tr>
+<td>conflicts</td>
+<td><code>async (self, *, include_resolved: bool=False) → list[dict[str, Any]]</code></td>
+</tr>
+<tr>
+<td>stats</td>
+<td><code>async (self) → dict[str, Any]</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="deployerservice">DeployerService<a class="headerlink" href="#deployerservice" title="Permanent link">&para;</a></h2>
+<p><a href="https://github.com/Arealtxh/AITrade/blob/af8543838893ef214bd45e558ebe855acb657149/aitrade/services/deployers.py#L25">源码</a></p>
+<table>
+<thead>
+<tr>
+<th>方法（async须await）</th>
+<th>签名</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>enqueue</td>
+<td><code>async (self, *, chain: str \| None=None, ucids: list[int] \| None=None, force: bool=False) → int</code></td>
+</tr>
+<tr>
+<td>resolve_contract</td>
+<td><code>async (self, contract_id: int, *, force: bool=False) → DeployerResult</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="holderservice">HolderService<a class="headerlink" href="#holderservice" title="Permanent link">&para;</a></h2>
+<p><a href="https://github.com/Arealtxh/AITrade/blob/af8543838893ef214bd45e558ebe855acb657149/aitrade/services/holders.py#L24">源码</a></p>
+<table>
+<thead>
+<tr>
+<th>方法（async须await）</th>
+<th>签名</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>enqueue</td>
+<td><code>async (self, *, chain: str \| None=None, ucids: list[int] \| None=None, force: bool=False) → int</code></td>
+</tr>
+<tr>
+<td>collect</td>
+<td><code>async (self, contract_id: int, *, force: bool=False) → HoldersResult</code></td>
+</tr>
+<tr>
+<td>save</td>
+<td><code>async (self, contract_id: int, result: HoldersResult) → int</code></td>
+</tr>
+<tr>
+<td>diff</td>
+<td><code>async (self, before: int, after: int) → dict[str, Any]</code></td>
+</tr>
+<tr>
+<td>prune</td>
+<td><code>async (self, *, keep: int \| None=None) → int</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="labelservice">LabelService<a class="headerlink" href="#labelservice" title="Permanent link">&para;</a></h2>
+<p><a href="https://github.com/Arealtxh/AITrade/blob/af8543838893ef214bd45e558ebe855acb657149/aitrade/services/labels.py#L74">源码</a></p>
+<table>
+<thead>
+<tr>
+<th>方法（async须await）</th>
+<th>签名</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>save</td>
+<td><code>async (self, labels: Sequence[Label]) → int</code></td>
+</tr>
+<tr>
+<td>show</td>
+<td><code>async (self, node_id: str) → dict[str, Any]</code></td>
+</tr>
+<tr>
+<td>heuristic</td>
+<td><code>async (self, *, dry_run: bool=True, counterparties: int \| None=None, transactions: int \| None=None, funded_nodes: int \| None=None) → list[Label]</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="addressprofileservice">AddressProfileService<a class="headerlink" href="#addressprofileservice" title="Permanent link">&para;</a></h2>
+<p><a href="https://github.com/Arealtxh/AITrade/blob/af8543838893ef214bd45e558ebe855acb657149/aitrade/services/address_profile.py#L31">源码</a></p>
+<table>
+<thead>
+<tr>
+<th>方法（async须await）</th>
+<th>签名</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>resolve</td>
+<td><code>async (self, node_id: str, chain: str) → AddressProfile</code></td>
+</tr>
+<tr>
+<td>save</td>
+<td><code>async (self, old_id: str, chain: str, profile: AddressProfile) → None</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="profiletaskservice">ProfileTaskService<a class="headerlink" href="#profiletaskservice" title="Permanent link">&para;</a></h2>
+<p><a href="https://github.com/Arealtxh/AITrade/blob/af8543838893ef214bd45e558ebe855acb657149/aitrade/services/address_profile.py#L219">源码</a></p>
+<table>
+<thead>
+<tr>
+<th>方法（async须await）</th>
+<th>签名</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>enqueue</td>
+<td><code>async (self, *, chain: str \| None=None, ucids: list[int] \| None=None, force: bool=False, with_funding: bool=False) → int</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="fundingservice">FundingService<a class="headerlink" href="#fundingservice" title="Permanent link">&para;</a></h2>
+<p><a href="https://github.com/Arealtxh/AITrade/blob/af8543838893ef214bd45e558ebe855acb657149/aitrade/services/funding.py#L21">源码</a></p>
+<table>
+<thead>
+<tr>
+<th>方法（async须await）</th>
+<th>签名</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>enqueue</td>
+<td><code>async (self, *, chain: str \| None=None, ucids: list[int] \| None=None, force: bool=False) → int</code></td>
+</tr>
+<tr>
+<td>resolve</td>
+<td><code>async (self, node_id: str, chain: str) → tuple[FundingInfo \| None, str]</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="_1">领域模型<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>字段/类型/默认表达式来自领域模型源码，约束表达式保留原文；未知值不得补零。</p>
+<h3 id="contractref">ContractRef<a class="headerlink" href="#contractref" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>默认/校验表达式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>chain</td>
+<td><code>ChainId</code></td>
+<td><code>—</code></td>
+</tr>
+<tr>
+<td>address</td>
+<td><code>str</code></td>
+<td><code>—</code></td>
+</tr>
+<tr>
+<td>ucid</td>
+<td><code>int \| None</code></td>
+<td><code>None</code></td>
+</tr>
+<tr>
+<td>decimals</td>
+<td><code>int \| None</code></td>
+<td><code>None</code></td>
+</tr>
+<tr>
+<td>is_primary</td>
+<td><code>bool</code></td>
+<td><code>False</code></td>
+</tr>
+<tr>
+<td>supported</td>
+<td><code>bool</code></td>
+<td><code>True</code></td>
+</tr>
+<tr>
+<td>skip_reason</td>
+<td><code>str \| None</code></td>
+<td><code>None</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="tokeninfo">TokenInfo<a class="headerlink" href="#tokeninfo" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>默认/校验表达式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ucid</td>
+<td><code>int</code></td>
+<td><code>—</code></td>
+</tr>
+<tr>
+<td>symbol</td>
+<td><code>str</code></td>
+<td><code>''</code></td>
+</tr>
+<tr>
+<td>name</td>
+<td><code>str</code></td>
+<td><code>''</code></td>
+</tr>
+<tr>
+<td>slug</td>
+<td><code>str \| None</code></td>
+<td><code>None</code></td>
+</tr>
+<tr>
+<td>is_native</td>
+<td><code>bool</code></td>
+<td><code>False</code></td>
+</tr>
+<tr>
+<td>contracts</td>
+<td><code>list[ContractRef]</code></td>
+<td><code>—</code></td>
+</tr>
+<tr>
+<td>tags</td>
+<td><code>list[tuple[str, str \| None]]</code></td>
+<td><code>—</code></td>
+</tr>
+<tr>
+<td>links</td>
+<td><code>list[TokenLink]</code></td>
+<td><code>—</code></td>
+</tr>
+<tr>
+<td>date_added</td>
+<td><code>datetime \| None</code></td>
+<td><code>None</code></td>
+</tr>
+<tr>
+<td>date_launched</td>
+<td><code>datetime \| None</code></td>
+<td><code>None</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="deployerresult">DeployerResult<a class="headerlink" href="#deployerresult" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>默认/校验表达式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>deployer_node</td>
+<td><code>str \| None</code></td>
+<td><code>None</code></td>
+</tr>
+<tr>
+<td>tx_from</td>
+<td><code>str \| None</code></td>
+<td><code>None</code></td>
+</tr>
+<tr>
+<td>factory</td>
+<td><code>str \| None</code></td>
+<td><code>None</code></td>
+</tr>
+<tr>
+<td>launchpad</td>
+<td><code>str \| None</code></td>
+<td><code>None</code></td>
+</tr>
+<tr>
+<td>deploy_tx</td>
+<td><code>str \| None</code></td>
+<td><code>None</code></td>
+</tr>
+<tr>
+<td>deploy_block</td>
+<td><code>int \| None</code></td>
+<td><code>None</code></td>
+</tr>
+<tr>
+<td>deployed_at</td>
+<td><code>datetime \| None</code></td>
+<td><code>None</code></td>
+</tr>
+<tr>
+<td>method</td>
+<td><code>Literal['direct', 'factory', 'launchpad', 'aa4337', 'safe', 'bridge', 'unknown']</code></td>
+<td><code>'unknown'</code></td>
+</tr>
+<tr>
+<td>resolve_status</td>
+<td><code>Literal['resolved', 'unsupported', 'not_found', 'failed']</code></td>
+<td><code>'resolved'</code></td>
+</tr>
+<tr>
+<td>confidence</td>
+<td><code>float</code></td>
+<td><code>Field(default=0, ge=0, le=1)</code></td>
+</tr>
+<tr>
+<td>native_chain_deployer</td>
+<td><code>str \| None</code></td>
+<td><code>None</code></td>
+</tr>
+<tr>
+<td>evidence</td>
+<td><code>dict[str, object]</code></td>
+<td><code>Field(default_factory=dict)</code></td>
+</tr>
+<tr>
+<td>source</td>
+<td><code>str</code></td>
+<td><code>—</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="fundinginfo">FundingInfo<a class="headerlink" href="#fundinginfo" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>默认/校验表达式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>node_id</td>
+<td><code>str</code></td>
+<td><code>—</code></td>
+</tr>
+<tr>
+<td>funder</td>
+<td><code>str</code></td>
+<td><code>—</code></td>
+</tr>
+<tr>
+<td>tx_hash</td>
+<td><code>str</code></td>
+<td><code>—</code></td>
+</tr>
+<tr>
+<td>chain</td>
+<td><code>ChainId</code></td>
+<td><code>—</code></td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td><code>datetime</code></td>
+<td><code>—</code></td>
+</tr>
+<tr>
+<td>amount_raw</td>
+<td><code>int \| None</code></td>
+<td><code>None</code></td>
+</tr>
+<tr>
+<td>source</td>
+<td><code>str</code></td>
+<td><code>—</code></td>
+</tr>
+<tr>
+<td>block</td>
+<td><code>int</code></td>
+<td><code>0</code></td>
+</tr>
+<tr>
+<td>position</td>
+<td><code>int</code></td>
+<td><code>0</code></td>
+</tr>
+<tr>
+<td>kind</td>
+<td><code>Literal['native', 'internal', 'token']</code></td>
+<td><code>'native'</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="label">Label<a class="headerlink" href="#label" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>默认/校验表达式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>node_id</td>
+<td><code>str</code></td>
+<td><code>—</code></td>
+</tr>
+<tr>
+<td>label_type</td>
+<td><code>str</code></td>
+<td><code>—</code></td>
+</tr>
+<tr>
+<td>label_name</td>
+<td><code>str \| None</code></td>
+<td><code>None</code></td>
+</tr>
+<tr>
+<td>source</td>
+<td><code>str</code></td>
+<td><code>—</code></td>
+</tr>
+<tr>
+<td>source_snapshot</td>
+<td><code>date \| None</code></td>
+<td><code>None</code></td>
+</tr>
+<tr>
+<td>confidence</td>
+<td><code>float</code></td>
+<td><code>Field(default=1, ge=0, le=1, allow_inf_nan=False)</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="holderrow">HolderRow<a class="headerlink" href="#holderrow" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>默认/校验表达式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>address</td>
+<td><code>str</code></td>
+<td><code>—</code></td>
+</tr>
+<tr>
+<td>balance_raw</td>
+<td><code>int</code></td>
+<td><code>Field(ge=0, strict=True, lt=10 ** 78)</code></td>
+</tr>
+<tr>
+<td>pct</td>
+<td><code>float \| None</code></td>
+<td><code>Field(default=None, ge=0, allow_inf_nan=False)</code></td>
+</tr>
+<tr>
+<td>label</td>
+<td><code>Label \| None</code></td>
+<td><code>None</code></td>
+</tr>
+<tr>
+<td>account_id</td>
+<td><code>str \| None</code></td>
+<td><code>None</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="holdersresult">HoldersResult<a class="headerlink" href="#holdersresult" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>默认/校验表达式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>rows</td>
+<td><code>list[HolderRow]</code></td>
+<td><code>—</code></td>
+</tr>
+<tr>
+<td>status</td>
+<td><code>Literal['complete', 'partial']</code></td>
+<td><code>—</code></td>
+</tr>
+<tr>
+<td>partial_reason</td>
+<td><code>str \| None</code></td>
+<td><code>None</code></td>
+</tr>
+<tr>
+<td>total_holders</td>
+<td><code>int \| None</code></td>
+<td><code>None</code></td>
+</tr>
+<tr>
+<td>source</td>
+<td><code>str</code></td>
+<td><code>—</code></td>
+</tr>
+<tr>
+<td>block_number</td>
+<td><code>int \| None</code></td>
+<td><code>None</code></td>
+</tr>
+<tr>
+<td>total_supply_raw</td>
+<td><code>int \| None</code></td>
+<td><code>None</code></td>
+</tr>
+<tr>
+<td>decimals</td>
+<td><code>int \| None</code></td>
+<td><code>None</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="addressprofile">AddressProfile<a class="headerlink" href="#addressprofile" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>默认/校验表达式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>node_id</td>
+<td><code>str</code></td>
+<td><code>—</code></td>
+</tr>
+<tr>
+<td>addr_type</td>
+<td><code>Literal['eoa', 'contract', 'program', 'pda', 'unknown']</code></td>
+<td><code>—</code></td>
+</tr>
+<tr>
+<td>contract_kind</td>
+<td><code>str \| None</code></td>
+<td><code>None</code></td>
+</tr>
+<tr>
+<td>tx_count</td>
+<td><code>int \| None</code></td>
+<td><code>None</code></td>
+</tr>
+<tr>
+<td>counterparty_count</td>
+<td><code>int \| None</code></td>
+<td><code>None</code></td>
+</tr>
+<tr>
+<td>funding</td>
+<td><code>FundingInfo \| None</code></td>
+<td><code>None</code></td>
+</tr>
+<tr>
+<td>evidence</td>
+<td><code>dict[str, object]</code></td>
+<td><code>Field(default_factory=dict)</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="_2">项目异常<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>异常继承和原职责说明直接来自core/errors.py；CLI转换规则见<a href="../../reference/interfaces/#exit-codes">退出码</a>。</p>
+<table>
+<thead>
+<tr>
+<th>异常</th>
+<th>继承</th>
+<th>源码说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AitradeError</td>
+<td>Exception</td>
+<td>所有自定义异常的基类。</td>
+</tr>
+<tr>
+<td>ConfigError</td>
+<td>AitradeError</td>
+<td>配置缺失或非法（CLI 退出码 1）。</td>
+</tr>
+<tr>
+<td>DatabaseError</td>
+<td>AitradeError</td>
+<td>数据库操作失败（CLI 退出码 3）。</td>
+</tr>
+<tr>
+<td>RateLimited</td>
+<td>AitradeError</td>
+<td>被数据源限速。不计入 attempts，按 retry_after 推迟重试。</td>
+</tr>
+<tr>
+<td>QuotaExhausted</td>
+<td>AitradeError</td>
+<td>日/月额度用完。推迟到下一个窗口，并让路由器暂时跳过这个数据源。</td>
+</tr>
+<tr>
+<td>TransientError</td>
+<td>AitradeError</td>
+<td>可重试的临时错误：网络错误、5xx、响应被截断。</td>
+</tr>
+<tr>
+<td>NotFound</td>
+<td>AitradeError</td>
+<td>数据源明确表示「没有这个对象」，例如地址不存在、交易查不到。</td>
+</tr>
+<tr>
+<td>CreationNotFound</td>
+<td>NotFound</td>
+<td>创建证据缺失的稳定分类；候选区块不是已确认的部署区块。</td>
+</tr>
+<tr>
+<td>EvidenceError</td>
+<td>ConfigError</td>
+<td>关键证据无法安全留存或重放；必须中止，不能降级为已核验结果。</td>
+</tr>
+<tr>
+<td>CollectionStopped</td>
+<td>ConfigError</td>
+<td>本地采集的STOP/硬预算/时限要求安全停止，不触发路由备源。</td>
+</tr>
+<tr>
+<td>Unsupported</td>
+<td>AitradeError</td>
+<td>数据源不支持该链或该能力，路由器会切到下一个候选。</td>
+</tr>
+<tr>
+<td>DataIncomplete</td>
+<td>AitradeError</td>
+<td>拿到了数据但不完整，任务状态记为 partial，不静默吞掉。</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-circle-arrow-up" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16 12-4-4-4 4M12 16V8"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://zensical.org/" target="_blank" rel="noopener">
+      Zensical
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog" role="status" aria-atomic="true">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      
+      
+        
+        
+      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["navigation.tabs","navigation.sections","navigation.top","content.code.copy","search.highlight"],"redirect":null,"search":"../../assets/javascripts/workers/search.c47bb847.min.js","tags":null,"translations":{"clipboard.copied":"已复制","clipboard.copy":"复制","clipboard.error":"Could not copy to clipboard","search.result.more.one":"在该页上还有 1 个符合条件的结果","search.result.more.other":"在该页上还有 # 个符合条件的结果","search.result.none":"没有找到符合条件的结果","search.result.one":"找到 1 个符合条件的结果","search.result.other":"# 个符合条件的结果","search.result.placeholder":"键入以开始搜索","search.result.term.missing":"缺少","select.version":"选择当前版本"},"version":null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.77dd0ce9.min.js"></script>
+      
+        <script src="../../assets/mermaid.tiny.js"></script>
+      
+    
+  </body>
+</html>
