@@ -1291,262 +1291,262 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/scripts/accept_database_pipeline.py">scripts/accept_database_pipeline.py</a></td>
+<td><a href="https://github.com/Arealtxh/AITrade/blob/9d74a5854e1a3066743a9cba522fa1858a823fb4/scripts/accept_database_pipeline.py">scripts/accept_database_pipeline.py</a></td>
 <td>D02/F01 或 D11/F02 真实隔离库联动；默认仅输出计划，在线须另获授权。</td>
 <td>默认计划；实际隔离库联动会建删临时库，online另耗来源额度；旧成功验收只复用。</td>
 </tr>
 <tr>
-<td><a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/scripts/accept_factory_samples.py">scripts/accept_factory_samples.py</a></td>
+<td><a href="https://github.com/Arealtxh/AITrade/blob/9d74a5854e1a3066743a9cba522fa1858a823fb4/scripts/accept_factory_samples.py">scripts/accept_factory_samples.py</a></td>
 <td>D05/D06 正式解析路径的隔离验收；默认计划模式，--online 才发送请求。</td>
 <td>计划/离线/online模式见源码；online使用来源请求与本地产物/费用账本，须单独有界授权；旧成功check不重跑，claim不恢复。</td>
 </tr>
 <tr>
-<td><a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/scripts/accept_m2_full.py">scripts/accept_m2_full.py</a></td>
+<td><a href="https://github.com/Arealtxh/AITrade/blob/9d74a5854e1a3066743a9cba522fa1858a823fb4/scripts/accept_m2_full.py">scripts/accept_m2_full.py</a></td>
 <td>M2 全范围只读采集与自动验收；默认只显示零副作用计划。</td>
 <td>计划/离线/online模式见源码；online使用来源请求与本地产物/费用账本，须单独有界授权；旧成功check不重跑，claim不恢复。</td>
 </tr>
 <tr>
-<td><a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/scripts/accept_m2_quality.py">scripts/accept_m2_quality.py</a></td>
+<td><a href="https://github.com/Arealtxh/AITrade/blob/9d74a5854e1a3066743a9cba522fa1858a823fb4/scripts/accept_m2_quality.py">scripts/accept_m2_quality.py</a></td>
 <td>M2 的 8 链 200 合约部署质量试跑；默认零副作用计划，在线不写业务库。</td>
 <td>计划/离线/online模式见源码；online使用来源请求与本地产物/费用账本，须单独有界授权；旧成功check不重跑，claim不恢复。</td>
 </tr>
 <tr>
-<td><a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/scripts/accept_m3_usable.py">scripts/accept_m3_usable.py</a></td>
+<td><a href="https://github.com/Arealtxh/AITrade/blob/9d74a5854e1a3066743a9cba522fa1858a823fb4/scripts/accept_m3_usable.py">scripts/accept_m3_usable.py</a></td>
 <td>M3有效采集率离线验收；原完整率单列，无online或正式写库入口。</td>
 <td>离线读取封存输入、生成本地审计/冻结/质量产物；不联网/写业务库，不覆盖已有成功回执。</td>
 </tr>
 <tr>
-<td><a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/scripts/accept_remaining_samples.py">scripts/accept_remaining_samples.py</a></td>
+<td><a href="https://github.com/Arealtxh/AITrade/blob/9d74a5854e1a3066743a9cba522fa1858a823fb4/scripts/accept_remaining_samples.py">scripts/accept_remaining_samples.py</a></td>
 <td>准备 D11/首笔资金/临时库联动；--online 仅执行有预算的 D11 只读解析。</td>
 <td>计划/离线/online模式见源码；online使用来源请求与本地产物/费用账本，须单独有界授权；旧成功check不重跑，claim不恢复。</td>
 </tr>
 <tr>
-<td><a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/scripts/audit_m3_cex_input.py">scripts/audit_m3_cex_input.py</a></td>
+<td><a href="https://github.com/Arealtxh/AITrade/blob/9d74a5854e1a3066743a9cba522fa1858a823fb4/scripts/audit_m3_cex_input.py">scripts/audit_m3_cex_input.py</a></td>
 <td>离线审计已封存CMC输入；默认帮助，不提供online、标签导入或评分模式。</td>
 <td>离线读取封存输入、生成本地审计/冻结/质量产物；不联网/写业务库，不覆盖已有成功回执。</td>
 </tr>
 <tr>
-<td><a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/scripts/audit_m3_cex_platforms.py">scripts/audit_m3_cex_platforms.py</a></td>
+<td><a href="https://github.com/Arealtxh/AITrade/blob/9d74a5854e1a3066743a9cba522fa1858a823fb4/scripts/audit_m3_cex_platforms.py">scripts/audit_m3_cex_platforms.py</a></td>
 <td>既有CMC平台元数据歧义审计；无online、标签导出、配置写入或评分模式。</td>
 <td>离线读取封存输入、生成本地审计/冻结/质量产物；不联网/写业务库，不覆盖已有成功回执。</td>
 </tr>
 <tr>
-<td><a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/scripts/audit_m3_holder_coverage.py">scripts/audit_m3_holder_coverage.py</a></td>
+<td><a href="https://github.com/Arealtxh/AITrade/blob/9d74a5854e1a3066743a9cba522fa1858a823fb4/scripts/audit_m3_holder_coverage.py">scripts/audit_m3_holder_coverage.py</a></td>
 <td>离线量化已完成补采的候选覆盖缺口；复用原成功回执，不启动采集或claim。</td>
 <td>离线读取封存输入、生成本地审计/冻结/质量产物；不联网/写业务库，不覆盖已有成功回执。</td>
 </tr>
 <tr>
-<td><a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/scripts/audit_m3_label_snapshot.py">scripts/audit_m3_label_snapshot.py</a></td>
+<td><a href="https://github.com/Arealtxh/AITrade/blob/9d74a5854e1a3066743a9cba522fa1858a823fb4/scripts/audit_m3_label_snapshot.py">scripts/audit_m3_label_snapshot.py</a></td>
 <td>完整公开标签原件离线盘点；默认帮助，不启动下载或正式标签导入。</td>
 <td>离线读取封存输入、生成本地审计/冻结/质量产物；不联网/写业务库，不覆盖已有成功回执。</td>
 </tr>
 <tr>
-<td><a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/scripts/capture_m3_cex_okx.py">scripts/capture_m3_cex_okx.py</a></td>
+<td><a href="https://github.com/Arealtxh/AITrade/blob/9d74a5854e1a3066743a9cba522fa1858a823fb4/scripts/capture_m3_cex_okx.py">scripts/capture_m3_cex_okx.py</a></td>
 <td>CMC缺失OKX输入的独立有界取证；默认帮助，离线模式不加载凭据或连接数据库。</td>
 <td>计划/离线/online模式见源码；online使用来源请求与本地产物/费用账本，须单独有界授权；旧成功check不重跑，claim不恢复。</td>
 </tr>
 <tr>
-<td><a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/scripts/capture_m3_label_snapshot.py">scripts/capture_m3_label_snapshot.py</a></td>
+<td><a href="https://github.com/Arealtxh/AITrade/blob/9d74a5854e1a3066743a9cba522fa1858a823fb4/scripts/capture_m3_label_snapshot.py">scripts/capture_m3_label_snapshot.py</a></td>
 <td>固定公开标签完整快照；默认帮助，不读取凭据/数据库或下载第三方程序。</td>
 <td>计划/离线/online模式见源码；online使用来源请求与本地产物/费用账本，须单独有界授权；旧成功check不重跑，claim不恢复。</td>
 </tr>
 <tr>
-<td><a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/scripts/capture_m3_spellbook.py">scripts/capture_m3_spellbook.py</a></td>
+<td><a href="https://github.com/Arealtxh/AITrade/blob/9d74a5854e1a3066743a9cba522fa1858a823fb4/scripts/capture_m3_spellbook.py">scripts/capture_m3_spellbook.py</a></td>
 <td>Spellbook两份完整地址SQL的有界本地研究取得；默认帮助，不执行来源代码。</td>
 <td>计划/离线/online模式见源码；online使用来源请求与本地产物/费用账本，须单独有界授权；旧成功check不重跑，claim不恢复。</td>
 </tr>
 <tr>
-<td><a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/scripts/check_m2_full.py">scripts/check_m2_full.py</a></td>
+<td><a href="https://github.com/Arealtxh/AITrade/blob/9d74a5854e1a3066743a9cba522fa1858a823fb4/scripts/check_m2_full.py">scripts/check_m2_full.py</a></td>
 <td>标准库检查父进程；完成实际 make 后才启动业务证据绑定进程。</td>
 <td>实际运行make检查（含临时测试库）并写证据；不是零副作用静态检查，不重跑成功质量check。</td>
 </tr>
 <tr>
-<td><a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/scripts/collect_m3_full.py">scripts/collect_m3_full.py</a></td>
+<td><a href="https://github.com/Arealtxh/AITrade/blob/9d74a5854e1a3066743a9cba522fa1858a823fb4/scripts/collect_m3_full.py">scripts/collect_m3_full.py</a></td>
 <td>M3全量原始持仓：默认帮助，公开计划，本地断点及只读检查，不连接数据库。</td>
 <td>计划/离线/online模式见源码；online使用来源请求与本地产物/费用账本，须单独有界授权；旧成功check不重跑，claim不恢复。</td>
 </tr>
 <tr>
-<td><a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/scripts/db_setup.sql">scripts/db_setup.sql</a></td>
+<td><a href="https://github.com/Arealtxh/AITrade/blob/9d74a5854e1a3066743a9cba522fa1858a823fb4/scripts/db_setup.sql">scripts/db_setup.sql</a></td>
 <td>其他机器初始化数据库角色/权限的SQL；主环境已配置。</td>
 <td>写数据库角色/权限；需单独授权，不用于查看数据。</td>
 </tr>
 <tr>
-<td><a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/scripts/diagnose_funding_boundary.py">scripts/diagnose_funding_boundary.py</a></td>
+<td><a href="https://github.com/Arealtxh/AITrade/blob/9d74a5854e1a3066743a9cba522fa1858a823fb4/scripts/diagnose_funding_boundary.py">scripts/diagnose_funding_boundary.py</a></td>
 <td>F02 已知资金游标的只读诊断；默认零请求，在线仅消耗原授权余量。</td>
 <td>计划/离线/online模式见源码；online使用来源请求与本地产物/费用账本，须单独有界授权；旧成功check不重跑，claim不恢复。</td>
 </tr>
 <tr>
-<td><a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/scripts/diagnose_funding_scan.py">scripts/diagnose_funding_scan.py</a></td>
+<td><a href="https://github.com/Arealtxh/AITrade/blob/9d74a5854e1a3066743a9cba522fa1858a823fb4/scripts/diagnose_funding_scan.py">scripts/diagnose_funding_scan.py</a></td>
 <td>F02 完整分页观测计划；在线超出原余量，必须先确认新增请求额度。</td>
 <td>计划/离线/online模式见源码；online使用来源请求与本地产物/费用账本，须单独有界授权；旧成功check不重跑，claim不恢复。</td>
 </tr>
 <tr>
-<td><a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/scripts/diagnose_m3_contracts.py">scripts/diagnose_m3_contracts.py</a></td>
+<td><a href="https://github.com/Arealtxh/AITrade/blob/9d74a5854e1a3066743a9cba522fa1858a823fb4/scripts/diagnose_m3_contracts.py">scripts/diagnose_m3_contracts.py</a></td>
 <td>固定两币调用上下文诊断；默认帮助，显式新范围online才读取凭据/发送请求。</td>
 <td>计划/离线/online模式见源码；online使用来源请求与本地产物/费用账本，须单独有界授权；旧成功check不重跑，claim不恢复。</td>
 </tr>
 <tr>
-<td><a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/scripts/docs_browser.py">scripts/docs_browser.py</a></td>
+<td><a href="https://github.com/Arealtxh/AITrade/blob/9d74a5854e1a3066743a9cba522fa1858a823fb4/scripts/docs_browser.py">scripts/docs_browser.py</a></td>
 <td>CI单Chromium交互验收：中文搜索、导航、复制、Mermaid和移动布局。</td>
 <td>仅CI临时浏览器/本地HTTP/文档回执；拦截所有非localhost请求，不连接业务数据库。</td>
 </tr>
 <tr>
-<td><a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/scripts/docs_site.py">scripts/docs_site.py</a></td>
+<td><a href="https://github.com/Arealtxh/AITrade/blob/9d74a5854e1a3066743a9cba522fa1858a823fb4/scripts/docs_site.py">scripts/docs_site.py</a></td>
 <td>内部文档的轻量源码清单、覆盖检查和缓存构建；不导入业务模块或读取运行配置。</td>
 <td>仅文档缓存/本地预览；资源供应访问固定公开文档资源，不触达业务数据库。</td>
 </tr>
 <tr>
-<td><a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/scripts/execute_m3_followup.py">scripts/execute_m3_followup.py</a></td>
+<td><a href="https://github.com/Arealtxh/AITrade/blob/9d74a5854e1a3066743a9cba522fa1858a823fb4/scripts/execute_m3_followup.py">scripts/execute_m3_followup.py</a></td>
 <td>350项独立有界补采；默认帮助，必须绑定真实父终态/实际费用/新计划摘要。</td>
 <td>计划/离线/online模式见源码；online使用来源请求与本地产物/费用账本，须单独有界授权；旧成功check不重跑，claim不恢复。</td>
 </tr>
 <tr>
-<td><a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/scripts/extend_m2_budget.py">scripts/extend_m2_budget.py</a></td>
+<td><a href="https://github.com/Arealtxh/AITrade/blob/9d74a5854e1a3066743a9cba522fa1858a823fb4/scripts/extend_m2_budget.py">scripts/extend_m2_budget.py</a></td>
 <td>ADR-033 时间额度交接；默认只读计划，显式 prepare 才创建新的冻结会话。</td>
 <td>默认计划/帮助；显式准备可能写本地冻结计划/会话，不创建新采集授权或恢复已消费claim。</td>
 </tr>
 <tr>
-<td><a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/scripts/extend_m2_budget_followup.py">scripts/extend_m2_budget_followup.py</a></td>
+<td><a href="https://github.com/Arealtxh/AITrade/blob/9d74a5854e1a3066743a9cba522fa1858a823fb4/scripts/extend_m2_budget_followup.py">scripts/extend_m2_budget_followup.py</a></td>
 <td>ADR-035 固定追加 43,200 来源任务秒；默认只读，显式 prepare 才创建新冻结。</td>
 <td>默认计划/帮助；显式准备可能写本地冻结计划/会话，不创建新采集授权或恢复已消费claim。</td>
 </tr>
 <tr>
-<td><a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/scripts/finalize_m2_scope.py">scripts/finalize_m2_scope.py</a></td>
+<td><a href="https://github.com/Arealtxh/AITrade/blob/9d74a5854e1a3066743a9cba522fa1858a823fb4/scripts/finalize_m2_scope.py">scripts/finalize_m2_scope.py</a></td>
 <td>M2 ADR-032 范围重评入口：默认仅计划，显式准备/等待均不采集、不读取凭据。</td>
 <td>默认计划/帮助；显式准备可能写本地冻结计划/会话，不创建新采集授权或恢复已消费claim。</td>
 </tr>
 <tr>
-<td><a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/scripts/freeze_m3_cex_core.py">scripts/freeze_m3_cex_core.py</a></td>
+<td><a href="https://github.com/Arealtxh/AITrade/blob/9d74a5854e1a3066743a9cba522fa1858a823fb4/scripts/freeze_m3_cex_core.py">scripts/freeze_m3_cex_core.py</a></td>
 <td>按已确认规则离线冻结核心储备参考；不提供online、生产标签导入或写库入口。</td>
 <td>离线读取封存输入、生成本地审计/冻结/质量产物；不联网/写业务库，不覆盖已有成功回执。</td>
 </tr>
 <tr>
-<td><a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/scripts/hooks/pre-push">scripts/hooks/pre-push</a></td>
+<td><a href="https://github.com/Arealtxh/AITrade/blob/9d74a5854e1a3066743a9cba522fa1858a823fb4/scripts/hooks/pre-push">scripts/hooks/pre-push</a></td>
 <td>拒绝直接推送main的本地Git钩子。</td>
 <td>只检查推送目标；安装钩子是独立make hooks操作。</td>
 </tr>
 <tr>
-<td><a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/scripts/import_m2_results.py">scripts/import_m2_results.py</a></td>
+<td><a href="https://github.com/Arealtxh/AITrade/blob/9d74a5854e1a3066743a9cba522fa1858a823fb4/scripts/import_m2_results.py">scripts/import_m2_results.py</a></td>
 <td>ADR-038离线入库入口：默认无副作用，来源校验/只读计划/显式写入分开。</td>
 <td>prepare/check离线产物、plan只读库；apply写业务库须单独授权，正式导入已完成，不重导。</td>
 </tr>
 <tr>
-<td><a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/scripts/import_m3_results.py">scripts/import_m3_results.py</a></td>
+<td><a href="https://github.com/Arealtxh/AITrade/blob/9d74a5854e1a3066743a9cba522fa1858a823fb4/scripts/import_m3_results.py">scripts/import_m3_results.py</a></td>
 <td>M3封存数据离线入口：prepare/check无数据库；plan只读；apply须显式绑定数据库名与计划。</td>
 <td>prepare/check离线产物、plan只读库；apply写业务库须单独授权，正式导入已完成，不重导。</td>
 </tr>
 <tr>
-<td><a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/scripts/pilot_m3.py">scripts/pilot_m3.py</a></td>
+<td><a href="https://github.com/Arealtxh/AITrade/blob/9d74a5854e1a3066743a9cba522fa1858a823fb4/scripts/pilot_m3.py">scripts/pilot_m3.py</a></td>
 <td>M3试采：默认仅帮助，plan只读冻结，online显式消耗有界额度。</td>
 <td>计划/离线/online模式见源码；online使用来源请求与本地产物/费用账本，须单独有界授权；旧成功check不重跑，claim不恢复。</td>
 </tr>
 <tr>
-<td><a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/scripts/prepare_funding_candidates.py">scripts/prepare_funding_candidates.py</a></td>
+<td><a href="https://github.com/Arealtxh/AITrade/blob/9d74a5854e1a3066743a9cba522fa1858a823fb4/scripts/prepare_funding_candidates.py">scripts/prepare_funding_candidates.py</a></td>
 <td>F01/F02 只读机器候选；默认零请求，不自动填写黄金 expect/manual。</td>
 <td>计划/离线/online模式见源码；online使用来源请求与本地产物/费用账本，须单独有界授权；旧成功check不重跑，claim不恢复。</td>
 </tr>
 <tr>
-<td><a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/scripts/prepare_m2_retry.py">scripts/prepare_m2_retry.py</a></td>
+<td><a href="https://github.com/Arealtxh/AITrade/blob/9d74a5854e1a3066743a9cba522fa1858a823fb4/scripts/prepare_m2_retry.py">scripts/prepare_m2_retry.py</a></td>
 <td>ADR-037 默认零副作用；显式plan/prepare验证已批准固定清单并准备新冻结。</td>
 <td>默认计划/帮助；显式准备可能写本地冻结计划/会话，不创建新采集授权或恢复已消费claim。</td>
 </tr>
 <tr>
-<td><a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/scripts/prepare_m2_transport.py">scripts/prepare_m2_transport.py</a></td>
+<td><a href="https://github.com/Arealtxh/AITrade/blob/9d74a5854e1a3066743a9cba522fa1858a823fb4/scripts/prepare_m2_transport.py">scripts/prepare_m2_transport.py</a></td>
 <td>ADR-034 传输修复的固定版本交接；默认只读，显式 prepare 才建立新冻结会话。</td>
 <td>默认计划/帮助；显式准备可能写本地冻结计划/会话，不创建新采集授权或恢复已消费claim。</td>
 </tr>
 <tr>
-<td><a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/scripts/prepare_m3_repair_followup.py">scripts/prepare_m3_repair_followup.py</a></td>
+<td><a href="https://github.com/Arealtxh/AITrade/blob/9d74a5854e1a3066743a9cba522fa1858a823fb4/scripts/prepare_m3_repair_followup.py">scripts/prepare_m3_repair_followup.py</a></td>
 <td>后续350项生产候选草案；没有online或claim创建模式，不能作为执行授权。</td>
 <td>默认计划/帮助；显式准备可能写本地冻结计划/会话，不创建新采集授权或恢复已消费claim。</td>
 </tr>
 <tr>
-<td><a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/scripts/probe_sources.py">scripts/probe_sources.py</a></td>
+<td><a href="https://github.com/Arealtxh/AITrade/blob/9d74a5854e1a3066743a9cba522fa1858a823fb4/scripts/probe_sources.py">scripts/probe_sources.py</a></td>
 <td>M0 数据源探针（05 §12 / FR-93）：<code>python scripts/probe_sources.py [--source P3] [--out PATH]</code>。</td>
 <td>来源请求和本地探针报告；使用运行配置，须另获额度授权，本轮不执行。</td>
 </tr>
 <tr>
-<td><a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/scripts/record_fixture.py">scripts/record_fixture.py</a></td>
+<td><a href="https://github.com/Arealtxh/AITrade/blob/9d74a5854e1a3066743a9cba522fa1858a823fb4/scripts/record_fixture.py">scripts/record_fixture.py</a></td>
 <td>录制真实响应当测试 fixture（07 §1.1）。</td>
 <td>真实外部请求并写fixture；须另获免费预算授权，严禁录入key。</td>
 </tr>
 <tr>
-<td><a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/scripts/repair_m3_full.py">scripts/repair_m3_full.py</a></td>
+<td><a href="https://github.com/Arealtxh/AITrade/blob/9d74a5854e1a3066743a9cba522fa1858a823fb4/scripts/repair_m3_full.py">scripts/repair_m3_full.py</a></td>
 <td>固定984项六链有界同hash补采；默认帮助，继承旧失败费用/截止，不恢复旧claim。</td>
 <td>计划/离线/online模式见源码；online使用来源请求与本地产物/费用账本，须单独有界授权；旧成功check不重跑，claim不恢复。</td>
 </tr>
 <tr>
-<td><a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/scripts/verify_factory_samples.py">scripts/verify_factory_samples.py</a></td>
+<td><a href="https://github.com/Arealtxh/AITrade/blob/9d74a5854e1a3066743a9cba522fa1858a823fb4/scripts/verify_factory_samples.py">scripts/verify_factory_samples.py</a></td>
 <td>D05/D06 历史证据：默认只输出计划，--online 才发送有预算的只读请求。</td>
 <td>计划/离线/online模式见源码；online使用来源请求与本地产物/费用账本，须单独有界授权；旧成功check不重跑，claim不恢复。</td>
 </tr>
 <tr>
-<td><a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/scripts/verify_m2_automatically.py">scripts/verify_m2_automatically.py</a></td>
+<td><a href="https://github.com/Arealtxh/AITrade/blob/9d74a5854e1a3066743a9cba522fa1858a823fb4/scripts/verify_m2_automatically.py">scripts/verify_m2_automatically.py</a></td>
 <td>M2 固定 50 条独立链证据核验；默认计划不读配置、不联网、不写库。</td>
 <td>计划/离线/online模式见源码；online使用来源请求与本地产物/费用账本，须单独有界授权；旧成功check不重跑，claim不恢复。</td>
 </tr>
 <tr>
-<td><a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/scripts/verify_m3_cex.py">scripts/verify_m3_cex.py</a></td>
+<td><a href="https://github.com/Arealtxh/AITrade/blob/9d74a5854e1a3066743a9cba522fa1858a823fb4/scripts/verify_m3_cex.py">scripts/verify_m3_cex.py</a></td>
 <td>M3双官方CEX参考与生产标签独立验收；默认帮助，plan/check零网络。</td>
 <td>计划/离线/online模式见源码；online使用来源请求与本地产物/费用账本，须单独有界授权；旧成功check不重跑，claim不恢复。</td>
 </tr>
 <tr>
-<td><a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/scripts/verify_m3_cex_reuse.py">scripts/verify_m3_cex_reuse.py</a></td>
+<td><a href="https://github.com/Arealtxh/AITrade/blob/9d74a5854e1a3066743a9cba522fa1858a823fb4/scripts/verify_m3_cex_reuse.py">scripts/verify_m3_cex_reuse.py</a></td>
 <td>M3完整官方参考复用与独立评分；默认帮助，plan/check零网络。</td>
 <td>计划/离线/online模式见源码；online使用来源请求与本地产物/费用账本，须单独有界授权；旧成功check不重跑，claim不恢复。</td>
 </tr>
 <tr>
-<td><a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/scripts/verify_m3_quality.py">scripts/verify_m3_quality.py</a></td>
+<td><a href="https://github.com/Arealtxh/AITrade/blob/9d74a5854e1a3066743a9cba522fa1858a823fb4/scripts/verify_m3_quality.py">scripts/verify_m3_quality.py</a></td>
 <td>M3独立榜单与固定区块验收；默认帮助，plan只读，check零网络。</td>
 <td>计划/离线/online模式见源码；online使用来源请求与本地产物/费用账本，须单独有界授权；旧成功check不重跑，claim不恢复。</td>
 </tr>
 <tr>
-<td><a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/scripts/verify_m3_sample.py">scripts/verify_m3_sample.py</a></td>
+<td><a href="https://github.com/Arealtxh/AITrade/blob/9d74a5854e1a3066743a9cba522fa1858a823fb4/scripts/verify_m3_sample.py">scripts/verify_m3_sample.py</a></td>
 <td>固定随机20的Chainbase/独立RPC核验；默认帮助，计划与离线检查均零数据库连接。</td>
 <td>计划/离线/online模式见源码；online使用来源请求与本地产物/费用账本，须单独有界授权；旧成功check不重跑，claim不恢复。</td>
 </tr>
 <tr>
-<td><a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/scripts/verify_m3_sample_batch.py">scripts/verify_m3_sample_batch.py</a></td>
+<td><a href="https://github.com/Arealtxh/AITrade/blob/9d74a5854e1a3066743a9cba522fa1858a823fb4/scripts/verify_m3_sample_batch.py">scripts/verify_m3_sample_batch.py</a></td>
 <td>固定随机20余两项显式批量/先头后榜单的新有界续验；默认帮助，计划与离线检查均零数据库连接。</td>
 <td>计划/离线/online模式见源码；online使用来源请求与本地产物/费用账本，须单独有界授权；旧成功check不重跑，claim不恢复。</td>
 </tr>
 <tr>
-<td><a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/scripts/verify_m3_sample_bound.py">scripts/verify_m3_sample_bound.py</a></td>
+<td><a href="https://github.com/Arealtxh/AITrade/blob/9d74a5854e1a3066743a9cba522fa1858a823fb4/scripts/verify_m3_sample_bound.py">scripts/verify_m3_sample_bound.py</a></td>
 <td>固定随机20两项精确源码下独立前50余量证明的一次有界取证；默认帮助，计划与离线检查均零数据库连接。</td>
 <td>计划/离线/online模式见源码；online使用来源请求与本地产物/费用账本，须单独有界授权；旧成功check不重跑，claim不恢复。</td>
 </tr>
 <tr>
-<td><a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/scripts/verify_m3_sample_interleave.py">scripts/verify_m3_sample_interleave.py</a></td>
+<td><a href="https://github.com/Arealtxh/AITrade/blob/9d74a5854e1a3066743a9cba522fa1858a823fb4/scripts/verify_m3_sample_interleave.py">scripts/verify_m3_sample_interleave.py</a></td>
 <td>固定随机20余两项确定顺序交替余额读取的新有界续验；默认帮助，计划与离线检查均零数据库连接。</td>
 <td>计划/离线/online模式见源码；online使用来源请求与本地产物/费用账本，须单独有界授权；旧成功check不重跑，claim不恢复。</td>
 </tr>
 <tr>
-<td><a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/scripts/verify_m3_sample_proof.py">scripts/verify_m3_sample_proof.py</a></td>
+<td><a href="https://github.com/Arealtxh/AITrade/blob/9d74a5854e1a3066743a9cba522fa1858a823fb4/scripts/verify_m3_sample_proof.py">scripts/verify_m3_sample_proof.py</a></td>
 <td>固定随机20余三项候选/完整余额证明的新有界续验；默认帮助，计划与离线检查均零数据库连接。</td>
 <td>计划/离线/online模式见源码；online使用来源请求与本地产物/费用账本，须单独有界授权；旧成功check不重跑，claim不恢复。</td>
 </tr>
 <tr>
-<td><a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/scripts/verify_m3_sample_rate.py">scripts/verify_m3_sample_rate.py</a></td>
+<td><a href="https://github.com/Arealtxh/AITrade/blob/9d74a5854e1a3066743a9cba522fa1858a823fb4/scripts/verify_m3_sample_rate.py">scripts/verify_m3_sample_rate.py</a></td>
 <td>固定随机20余两项分机构批量/免费吞吐节奏的新有界续验；默认帮助，计划与离线检查均零数据库连接。</td>
 <td>计划/离线/online模式见源码；online使用来源请求与本地产物/费用账本，须单独有界授权；旧成功check不重跑，claim不恢复。</td>
 </tr>
 <tr>
-<td><a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/scripts/verify_m3_sample_retry.py">scripts/verify_m3_sample_retry.py</a></td>
+<td><a href="https://github.com/Arealtxh/AITrade/blob/9d74a5854e1a3066743a9cba522fa1858a823fb4/scripts/verify_m3_sample_retry.py">scripts/verify_m3_sample_retry.py</a></td>
 <td>固定随机20余8项的新有界续验；默认帮助，计划与离线检查均零数据库连接。</td>
 <td>计划/离线/online模式见源码；online使用来源请求与本地产物/费用账本，须单独有界授权；旧成功check不重跑，claim不恢复。</td>
 </tr>
 <tr>
-<td><a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/scripts/verify_m3_sample_targeted.py">scripts/verify_m3_sample_targeted.py</a></td>
+<td><a href="https://github.com/Arealtxh/AITrade/blob/9d74a5854e1a3066743a9cba522fa1858a823fb4/scripts/verify_m3_sample_targeted.py">scripts/verify_m3_sample_targeted.py</a></td>
 <td>固定随机20余三项的新有界续验；默认帮助，计划与离线检查均零数据库连接。</td>
 <td>计划/离线/online模式见源码；online使用来源请求与本地产物/费用账本，须单独有界授权；旧成功check不重跑，claim不恢复。</td>
 </tr>
 <tr>
-<td><a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/scripts/verify_m3_sample_window600.py">scripts/verify_m3_sample_window600.py</a></td>
+<td><a href="https://github.com/Arealtxh/AITrade/blob/9d74a5854e1a3066743a9cba522fa1858a823fb4/scripts/verify_m3_sample_window600.py">scripts/verify_m3_sample_window600.py</a></td>
 <td>固定随机20余两项用户确认600秒窗口的一次有界续验；默认帮助，计划与离线检查均零数据库连接。</td>
 <td>计划/离线/online模式见源码；online使用来源请求与本地产物/费用账本，须单独有界授权；旧成功check不重跑，claim不恢复。</td>
 </tr>
 <tr>
-<td><a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/scripts/verify_m3_sample_window_retry.py">scripts/verify_m3_sample_window_retry.py</a></td>
+<td><a href="https://github.com/Arealtxh/AITrade/blob/9d74a5854e1a3066743a9cba522fa1858a823fb4/scripts/verify_m3_sample_window_retry.py">scripts/verify_m3_sample_window_retry.py</a></td>
 <td>固定随机20余三项候选/冷却的新有界续验；默认帮助，计划与离线检查均零数据库连接。</td>
 <td>计划/离线/online模式见源码；online使用来源请求与本地产物/费用账本，须单独有界授权；旧成功check不重跑，claim不恢复。</td>
 </tr>

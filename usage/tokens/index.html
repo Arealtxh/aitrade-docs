@@ -1441,10 +1441,10 @@ uv<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </sp
 <h3 id="_2">同步入口，仅说明不执行<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p><code>tokens sync</code>会写库并请求来源；默认完整UCID集合，<code>--limit</code>只用于明确获批的小范围；<code>--skip-info</code>跳过详情，<code>--refresh-info</code>强制重取详情，<code>--with-coingecko</code>补全缺失合约。<a href="../../reference/cli/#tokens-sync">参数与默认值</a>。本手册不授权同步或刷新。</p>
 <h2 id="_3">如何实现<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<p>CLI → <a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/aitrade/services/tokens.py">TokenService</a> → CMC/可选CoinGecko适配器与统一HTTP/额度控制 → tokens、token_contracts、token_tags、token_links及冲突/同步记录。show读取已有结果，resolve仅本地未命中时走来源。</p>
-<p><a href="../../reference/schema/#tokens">字段参考</a> · <a href="../../architecture/code-map/">代码地图</a> · <a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/tests/integration/test_tokens_service.py">M1服务测试</a></p>
+<p>CLI → <a href="https://github.com/Arealtxh/AITrade/blob/9d74a5854e1a3066743a9cba522fa1858a823fb4/aitrade/services/tokens.py">TokenService</a> → CMC/可选CoinGecko适配器与统一HTTP/额度控制 → tokens、token_contracts、token_tags、token_links及冲突/同步记录。show读取已有结果，resolve仅本地未命中时走来源。</p>
+<p><a href="../../reference/schema/#tokens">字段参考</a> · <a href="../../architecture/code-map/">代码地图</a> · <a href="https://github.com/Arealtxh/AITrade/blob/9d74a5854e1a3066743a9cba522fa1858a823fb4/tests/integration/test_tokens_service.py">M1服务测试</a></p>
 <h2 id="_4">为什么这样设计<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<p>分析范围是最新同步集合<code>tokens.in_universe</code>，不是排名或市值。旧“前一万”及rank设计不能覆盖后来已采纳的全UCID规则；原生币或不支持链仍保留记录，不能伪造支持的合约。依据：<a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/docs/ADR.md#L27">ADR-008</a>、<a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/docs/ADR.md#L128">ADR-018</a>。</p>
+<p>分析范围是最新同步集合<code>tokens.in_universe</code>，不是排名或市值。旧“前一万”及rank设计不能覆盖后来已采纳的全UCID规则；原生币或不支持链仍保留记录，不能伪造支持的合约。依据：<a href="https://github.com/Arealtxh/AITrade/blob/9d74a5854e1a3066743a9cba522fa1858a823fb4/docs/ADR.md#L27">ADR-008</a>、<a href="https://github.com/Arealtxh/AITrade/blob/9d74a5854e1a3066743a9cba522fa1858a823fb4/docs/ADR.md#L128">ADR-018</a>。</p>
 
 
 

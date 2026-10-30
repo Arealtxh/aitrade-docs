@@ -619,6 +619,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#transfers" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        交易观察与资金信号
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1376,6 +1387,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#transfers" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        交易观察与资金信号
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1393,7 +1415,7 @@
                   
 
 
-<h1 id="m4a">本地关联信号（M4a）<a class="headerlink" href="#m4a" title="Permanent link">&para;</a></h1>
+<h1 id="m4ab">本地关联信号（M4a/b）<a class="headerlink" href="#m4ab" title="Permanent link">&para;</a></h1>
 <p>M4a利用已有UCID、部署者、最新持仓和标签计算三种关系：相同部署者、共享官网/社交链接、同部署者系列代币的重复持有人。运行会写目标数据库的结果表和分析运行记录；没有来源HTTP，不自动采集或迁移。正式M3数据库的0006状态不因代码增加0007而改变，正式迁移及运行要先有具体授权。</p>
 <h2 id="_1">使用方式<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>以下是<strong>命令用法示意，未在正式库执行</strong>；目标库须已明确升级0007：</p>
@@ -1436,8 +1458,41 @@ uv<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </sp
 <p>过滤同时使用有效来源标签与当前链规范节点的画像结构分类：已识别LP即使没有标签也排除；人工project归属声明不能取消LP结构事实，普通合约和Safe不会仅因合约类型而被排除。做市商策略沿用<code>labels.exclude_market_makers</code>，切换设置或画像分类会使new重算并恢复/撤销对应地址边。</p>
 <h2 id="_3">输出与实现位置<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <p>JSON包含run_id、scope_key、input_sha256、skipped、edges/relations、输入和过滤计数、partial快照及http_requests=0；边中保留涉及UCID、部署者、共享链接或持仓快照证据。候选组数不能当作数据库实际扫描行数。</p>
-<p>实现：<a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/aitrade/analysis/signals/base.py">纯规则</a>、<a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/aitrade/services/signal_inputs.py">输入投影</a>、<a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/aitrade/services/signals.py">运行服务</a>、<a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/migrations/versions/0007_local_signals.py">迁移</a>。独立合成规则反例见<a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/tests/unit/test_m4_signals.py">单元测试</a>，真实临时库闭环见<a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/tests/integration/test_m4_signals_database.py">集成测试</a>；二者不冒充生产覆盖测量。设计依据：<a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/docs/ADR.md#L1164">ADR-139</a>及<a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/docs/M4-IMPLEMENTATION.md">M4计划</a>。</p>
-<p>共同资金、部署者交易往来、早期买入、充值复用及Solana代付属于M4b/c；实体聚类与报表属于M5。M4a实现不代表这些功能已完成。</p>
+<p>实现：<a href="https://github.com/Arealtxh/AITrade/blob/9d74a5854e1a3066743a9cba522fa1858a823fb4/aitrade/analysis/signals/base.py">纯规则</a>、<a href="https://github.com/Arealtxh/AITrade/blob/9d74a5854e1a3066743a9cba522fa1858a823fb4/aitrade/services/signal_inputs.py">输入投影</a>、<a href="https://github.com/Arealtxh/AITrade/blob/9d74a5854e1a3066743a9cba522fa1858a823fb4/aitrade/services/signals.py">运行服务</a>、<a href="https://github.com/Arealtxh/AITrade/blob/9d74a5854e1a3066743a9cba522fa1858a823fb4/migrations/versions/0007_local_signals.py">迁移</a>。独立合成规则反例见<a href="https://github.com/Arealtxh/AITrade/blob/9d74a5854e1a3066743a9cba522fa1858a823fb4/tests/unit/test_m4_signals.py">单元测试</a>，真实临时库闭环见<a href="https://github.com/Arealtxh/AITrade/blob/9d74a5854e1a3066743a9cba522fa1858a823fb4/tests/integration/test_m4_signals_database.py">集成测试</a>；二者不冒充生产覆盖测量。设计依据：<a href="https://github.com/Arealtxh/AITrade/blob/9d74a5854e1a3066743a9cba522fa1858a823fb4/docs/ADR.md#L1164">ADR-139</a>及<a href="https://github.com/Arealtxh/AITrade/blob/9d74a5854e1a3066743a9cba522fa1858a823fb4/docs/M4-IMPLEMENTATION.md">M4计划</a>。</p>
+<h2 id="transfers">交易观察与资金信号<a class="headerlink" href="#transfers" title="Permanent link">&para;</a></h2>
+<p>M4b在已有观察上增加shared_funder、funded_by、deployer_transfer；需要显式0008，默认signals仍只跑原三个信号。以下是<strong>命令用法示意，未在正式库执行</strong>：</p>
+<div class="highlight"><pre><span></span><code>uv<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span>-m<span class="w"> </span>aitrade<span class="w"> </span>--json<span class="w"> </span>transfers<span class="w"> </span>import<span class="w"> </span>recorded-history.json
+uv<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span>-m<span class="w"> </span>aitrade<span class="w"> </span>--json<span class="w"> </span>signals<span class="w"> </span>run<span class="w"> </span>--signal<span class="w"> </span>shared_funder<span class="w"> </span>--signal<span class="w"> </span>funded_by
+uv<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span>-m<span class="w"> </span>aitrade<span class="w"> </span>--json<span class="w"> </span>signals<span class="w"> </span>run<span class="w"> </span>--signal<span class="w"> </span>deployer_transfer<span class="w"> </span>--chain<span class="w"> </span>ethereum
+</code></pre></div>
+<p>文件模型见<a href="../../reference/python/#transferhistory">自动参考</a>。TransferHistory包含EVM链、原始目标地址、start_block/end_block、end_block_hash、source、raw_sha256、provenance、completed_streams及transfers。每事件含tx_hash/kind/asset、src_address/dst_address、整数amount_raw、block_number/tx_index、block_time/success；token需要event_index，internal需要trace_id。trace标识不证明执行次序。文件≤10MiB，事件≤100000，参数/模型非法先拒绝；导入不采集、不迁移、不运行信号，不创建任务。</p>
+<p>source_recorded只表示调用方声明录制来源，<strong>没有独立核验</strong>；synthetic不能据此变为真实来源。分页截断保留partial，只提供已见正转账。gas要求从区块0开始且native/internal两流完整；全资产首笔还要求token流完整。完整空和缺历史不同，顺序或资助者歧义不猜首笔。现有addresses.first_funder可能是token入账，不能直接用于gas边。</p>
+<p>默认导入不改旧摘要。另给<code>--backfill-first</code>要求非synthetic、三流完整无歧义和已有规范画像，只补全空摘要或严格更早；旧时间未知或同时冲突整批回滚。profile_evidence._first_funding保存批次和非独立来源资格，普通资金服务另写更早摘要时会移除旧批次标记。重复批次不改时间/序列、不能借重复导入切换回填策略，也不会重新激活较旧输入。</p>
+<table>
+<thead>
+<tr>
+<th>新信号</th>
+<th>分数及实际覆盖</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>shared_funder</td>
+<td>0.8×hub_penalty；分母是全部已观察种子节点下界，链过滤不能缩小分母；仅funder_hub标签保留降权，CEX/relayer等仍排除</td>
+</tr>
+<tr>
+<td>funded_by</td>
+<td>0.85，有向资助者→被资助者；需完整gas首笔</td>
+</tr>
+<tr>
+<td>deployer_transfer</td>
+<td>部署后30天、严格晚于部署区块；原生币或该UCID合约代币，1跳0.9、2跳0.6；普通合约一跳上限0.6；观察到单交易&gt;100接收方再乘0.3</td>
+</tr>
+</tbody>
+</table>
+<p>二跳必须保持资产且能证明事件先后，只读取一跳非排除中间地址的已存历史。所有权重仍为规则分数；边包含UCID、链、批次/交易、provenance及partial覆盖。导入新批次后要显式重算才撤销旧边；new同时依赖覆盖/事件/部署窗口/身份/标签。0008降级会撤销新三信号及其旧成功跳过资格，保留M4a结果和历史摘要。</p>
+<p>读取器已接Etherscan/Blockscout的显式固定范围方法，但本阶段只用模拟响应验证；缺日志位置/trace标识/明确成功状态会拒绝，不能推定免费API实际具备全部字段。未做TC14真实采集或正式规模扫描，免费链权限、实际扫描行数、耗时及独立质量仍未测。早期买入、充值复用和Solana代付留给M4c，实体聚类/报表属于M5。</p>
+<p>实现：<a href="https://github.com/Arealtxh/AITrade/blob/9d74a5854e1a3066743a9cba522fa1858a823fb4/aitrade/services/transfers.py">批次导入</a>、<a href="https://github.com/Arealtxh/AITrade/blob/9d74a5854e1a3066743a9cba522fa1858a823fb4/aitrade/services/transfer_inputs.py">局部输入</a>、<a href="https://github.com/Arealtxh/AITrade/blob/9d74a5854e1a3066743a9cba522fa1858a823fb4/aitrade/analysis/signals/transactions.py">资金与路径规则</a>、<a href="https://github.com/Arealtxh/AITrade/blob/9d74a5854e1a3066743a9cba522fa1858a823fb4/aitrade/sources/transfers.py">有界读取器</a>、<a href="https://github.com/Arealtxh/AITrade/blob/9d74a5854e1a3066743a9cba522fa1858a823fb4/sql/first_funding.sql">事件读取SQL</a>、<a href="https://github.com/Arealtxh/AITrade/blob/9d74a5854e1a3066743a9cba522fa1858a823fb4/sql/deployer_transfers.sql">二跳候选SQL</a>。设计依据：<a href="https://github.com/Arealtxh/AITrade/blob/9d74a5854e1a3066743a9cba522fa1858a823fb4/docs/ADR.md#L1178">ADR-140</a>及<a href="https://github.com/Arealtxh/AITrade/blob/9d74a5854e1a3066743a9cba522fa1858a823fb4/docs/M4B-IMPLEMENTATION.md">M4b计划</a>；<a href="https://github.com/Arealtxh/AITrade/blob/9d74a5854e1a3066743a9cba522fa1858a823fb4/tests/integration/test_m4b_database.py">真实临时库检查</a>不冒充真实链证据。</p>
 
 
 
