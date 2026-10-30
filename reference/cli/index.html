@@ -523,6 +523,33 @@
   
   
     <li class="md-nav__item">
+      <a href="../../usage/signals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  本地关联信号
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../usage/labels/" class="md-nav__link">
         
   
@@ -758,6 +785,17 @@
     <span class="md-ellipsis">
       <span class="md-typeset">
         全局选项
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#signals-run" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        signals run
       </span>
     </span>
   </a>
@@ -1515,6 +1553,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#signals-run" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        signals run
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#db-upgrade" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -1782,11 +1831,52 @@
 </tr>
 </tbody>
 </table>
+<h2 id="signals-run">signals run<a class="headerlink" href="#signals-run" title="Permanent link">&para;</a></h2>
+<p>用已有数据计算same_deployer/same_socials/cross_token。</p>
+<p><strong>副作用：</strong> 写关联结果/分析运行；零HTTP、不自动迁移，目标库需0007；正式运行单独确认。</p>
+<p><strong>返回内容：</strong> run_id/scope_key/input_sha256/skipped、关联及覆盖计数，--json完整回执。</p>
+<p><a href="../../usage/signals/">使用指南</a> · <a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/aitrade/cli.py#L163">实现源码</a></p>
+<table>
+<thead>
+<tr>
+<th>参数/选项</th>
+<th>类型</th>
+<th>默认</th>
+<th>源码帮助/约束</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>--signal</td>
+<td><code>list[str]</code></td>
+<td><code>[]</code></td>
+<td>same_deployer | same_socials | cross_token，可重复</td>
+</tr>
+<tr>
+<td>--chain</td>
+<td><code>str \| None</code></td>
+<td><code>None</code></td>
+<td>限制到一条已配置链，独立结果视图</td>
+</tr>
+<tr>
+<td>--scope</td>
+<td><code>str</code></td>
+<td><code>'all'</code></td>
+<td>all重算；new仅输入及发布状态一致时跳过</td>
+</tr>
+<tr>
+<td>--max-results</td>
+<td><code>int</code></td>
+<td><code>250000</code></td>
+<td>本地输出上限，超限整轮拒绝；min=1</td>
+</tr>
+</tbody>
+</table>
 <h2 id="db-upgrade">db upgrade<a class="headerlink" href="#db-upgrade" title="Permanent link">&para;</a></h2>
 <p>执行显式Alembic升级；--sql仅输出SQL。</p>
 <p><strong>副作用：</strong> 默认写目标库结构，必须单独授权；--sql不执行SQL但仍需有效配置。</p>
 <p><strong>返回内容：</strong> 迁移日志；非--sql成功时JSON包含command/revision/status。</p>
-<p><a href="../../development/operations/">使用指南</a> · <a href="https://github.com/Arealtxh/AITrade/blob/9b2aa6dd37b26913e84beb5b38b4136255fa1fd1/aitrade/cli.py#L164">实现源码</a></p>
+<p><a href="../../development/operations/">使用指南</a> · <a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/aitrade/cli.py#L212">实现源码</a></p>
 <table>
 <thead>
 <tr>
@@ -1815,7 +1905,7 @@
 <p>查看队列汇总、错误和额度快照。</p>
 <p><strong>副作用：</strong> 读取数据库，不调用来源。</p>
 <p><strong>返回内容：</strong> jobs、top_errors、quota或终端表格。</p>
-<p><a href="../../usage/jobs/">使用指南</a> · <a href="https://github.com/Arealtxh/AITrade/blob/9b2aa6dd37b26913e84beb5b38b4136255fa1fd1/aitrade/cli.py#L221">实现源码</a></p>
+<p><a href="../../usage/jobs/">使用指南</a> · <a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/aitrade/cli.py#L269">实现源码</a></p>
 <table>
 <thead>
 <tr>
@@ -1838,7 +1928,7 @@
 <p>显式探测来源能力，生成探针报告。</p>
 <p><strong>副作用：</strong> 外部请求/额度与本地报告写入；需确认范围，不是只读业务查看。</p>
 <p><strong>返回内容：</strong> 探针状态、报告路径；阻断项可返回4。</p>
-<p><a href="../../development/operations/">使用指南</a> · <a href="https://github.com/Arealtxh/AITrade/blob/9b2aa6dd37b26913e84beb5b38b4136255fa1fd1/aitrade/cli.py#L271">实现源码</a></p>
+<p><a href="../../development/operations/">使用指南</a> · <a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/aitrade/cli.py#L319">实现源码</a></p>
 <table>
 <thead>
 <tr>
@@ -1867,7 +1957,7 @@
 <p>为deployer/holders/address_profile登记任务。</p>
 <p><strong>副作用：</strong> 写队列；--force重置可重跑任务，--with-funding扩大画像内容。</p>
 <p><strong>返回内容：</strong> kind/chain/ucids/enqueued/force。</p>
-<p><a href="../../usage/jobs/">使用指南</a> · <a href="https://github.com/Arealtxh/AITrade/blob/9b2aa6dd37b26913e84beb5b38b4136255fa1fd1/aitrade/cli.py#L327">实现源码</a></p>
+<p><a href="../../usage/jobs/">使用指南</a> · <a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/aitrade/cli.py#L375">实现源码</a></p>
 <table>
 <thead>
 <tr>
@@ -1914,7 +2004,7 @@
 <p>启动worker处理已有任务。</p>
 <p><strong>副作用：</strong> 默认持续运行，可能联网、消耗额度、写业务及队列；须授权。</p>
 <p><strong>返回内容：</strong> worker/claimed/done/partial/requeued/failed/reaped/by_kind。</p>
-<p><a href="../../usage/jobs/">使用指南</a> · <a href="https://github.com/Arealtxh/AITrade/blob/9b2aa6dd37b26913e84beb5b38b4136255fa1fd1/aitrade/cli.py#L374">实现源码</a></p>
+<p><a href="../../usage/jobs/">使用指南</a> · <a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/aitrade/cli.py#L422">实现源码</a></p>
 <table>
 <thead>
 <tr>
@@ -1961,7 +2051,7 @@
 <p>将匹配状态任务重新入队。</p>
 <p><strong>副作用：</strong> 写队列，不能随意恢复历史成功任务或claim。</p>
 <p><strong>返回内容：</strong> kind/status/requeued。</p>
-<p><a href="../../usage/jobs/">使用指南</a> · <a href="https://github.com/Arealtxh/AITrade/blob/9b2aa6dd37b26913e84beb5b38b4136255fa1fd1/aitrade/cli.py#L422">实现源码</a></p>
+<p><a href="../../usage/jobs/">使用指南</a> · <a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/aitrade/cli.py#L470">实现源码</a></p>
 <table>
 <thead>
 <tr>
@@ -1990,7 +2080,7 @@
 <p>查看逐条任务。</p>
 <p><strong>副作用：</strong> 读数据库；默认limit=50。</p>
 <p><strong>返回内容：</strong> jobs列表，含id/kind/target_key/status/attempts/run_after/last_source/last_error。</p>
-<p><a href="../../usage/jobs/">使用指南</a> · <a href="https://github.com/Arealtxh/AITrade/blob/9b2aa6dd37b26913e84beb5b38b4136255fa1fd1/aitrade/cli.py#L448">实现源码</a></p>
+<p><a href="../../usage/jobs/">使用指南</a> · <a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/aitrade/cli.py#L496">实现源码</a></p>
 <table>
 <thead>
 <tr>
@@ -2025,7 +2115,7 @@
 <p>同步全部有UCID的代币、合约与元数据。</p>
 <p><strong>副作用：</strong> 来源网络/免费额度/业务写入；小范围、刷新和补全均需确认。</p>
 <p><strong>返回内容：</strong> sync统计与stats；缺详情可返回4。</p>
-<p><a href="../../usage/tokens/">使用指南</a> · <a href="https://github.com/Arealtxh/AITrade/blob/9b2aa6dd37b26913e84beb5b38b4136255fa1fd1/aitrade/cli.py#L585">实现源码</a></p>
+<p><a href="../../usage/tokens/">使用指南</a> · <a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/aitrade/cli.py#L633">实现源码</a></p>
 <table>
 <thead>
 <tr>
@@ -2066,7 +2156,7 @@
 <p>按UCID读已有代币、合约、标签/链接与部署结果。</p>
 <p><strong>副作用：</strong> 读数据库，不自动采集。</p>
 <p><strong>返回内容：</strong> 代币详情字典；不存在返回非成功及说明。</p>
-<p><a href="../../usage/tokens/">使用指南</a> · <a href="https://github.com/Arealtxh/AITrade/blob/9b2aa6dd37b26913e84beb5b38b4136255fa1fd1/aitrade/cli.py#L635">实现源码</a></p>
+<p><a href="../../usage/tokens/">使用指南</a> · <a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/aitrade/cli.py#L683">实现源码</a></p>
 <table>
 <thead>
 <tr>
@@ -2089,7 +2179,7 @@
 <p>按链和合约反查UCID，可选手动登记。</p>
 <p><strong>副作用：</strong> 先读本地，未命中可联网/记额；--add在非本地来源时写手动合约。</p>
 <p><strong>返回内容：</strong> chain/address/ucid/source/stored；无UCID返回4。</p>
-<p><a href="../../usage/tokens/">使用指南</a> · <a href="https://github.com/Arealtxh/AITrade/blob/9b2aa6dd37b26913e84beb5b38b4136255fa1fd1/aitrade/cli.py#L681">实现源码</a></p>
+<p><a href="../../usage/tokens/">使用指南</a> · <a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/aitrade/cli.py#L729">实现源码</a></p>
 <table>
 <thead>
 <tr>
@@ -2124,7 +2214,7 @@
 <p>查看UCID与同地址合约的冲突。</p>
 <p><strong>副作用：</strong> 读数据库；可包含已解决项。</p>
 <p><strong>返回内容：</strong> conflicts列表。</p>
-<p><a href="../../usage/tokens/">使用指南</a> · <a href="https://github.com/Arealtxh/AITrade/blob/9b2aa6dd37b26913e84beb5b38b4136255fa1fd1/aitrade/cli.py#L720">实现源码</a></p>
+<p><a href="../../usage/tokens/">使用指南</a> · <a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/aitrade/cli.py#L768">实现源码</a></p>
 <table>
 <thead>
 <tr>
@@ -2147,7 +2237,7 @@
 <p>查看现有总体、原生币和链合约统计。</p>
 <p><strong>副作用：</strong> 读数据库，不刷新CMC集合。</p>
 <p><strong>返回内容：</strong> 总体与各链统计或表格。</p>
-<p><a href="../../usage/tokens/">使用指南</a> · <a href="https://github.com/Arealtxh/AITrade/blob/9b2aa6dd37b26913e84beb5b38b4136255fa1fd1/aitrade/cli.py#L754">实现源码</a></p>
+<p><a href="../../usage/tokens/">使用指南</a> · <a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/aitrade/cli.py#L802">实现源码</a></p>
 <table>
 <thead>
 <tr>
@@ -2170,7 +2260,7 @@
 <p>导入完整验证的本地CSV或CMC交易所钱包标签。</p>
 <p><strong>副作用：</strong> 写标签；cmc_exchange还联网/记额，本地来源需path。</p>
 <p><strong>返回内容：</strong> source/imported；测试Fixture例为1，不代表正式库数量。</p>
-<p><a href="../../usage/labels/">使用指南</a> · <a href="https://github.com/Arealtxh/AITrade/blob/9b2aa6dd37b26913e84beb5b38b4136255fa1fd1/aitrade/cli.py#L776">实现源码</a></p>
+<p><a href="../../usage/labels/">使用指南</a> · <a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/aitrade/cli.py#L824">实现源码</a></p>
 <table>
 <thead>
 <tr>
@@ -2205,7 +2295,7 @@
 <p>新增或替换人工标签。</p>
 <p><strong>副作用：</strong> 写manual标签，遵循当前链身份和事务互斥。</p>
 <p><strong>返回内容：</strong> node_id/label_type/source；不代表自动证据或人工黄金验收。</p>
-<p><a href="../../usage/labels/">使用指南</a> · <a href="https://github.com/Arealtxh/AITrade/blob/9b2aa6dd37b26913e84beb5b38b4136255fa1fd1/aitrade/cli.py#L830">实现源码</a></p>
+<p><a href="../../usage/labels/">使用指南</a> · <a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/aitrade/cli.py#L881">实现源码</a></p>
 <table>
 <thead>
 <tr>
@@ -2246,7 +2336,7 @@
 <p>查看当前链标签、有效winner和排除结论。</p>
 <p><strong>副作用：</strong> 读数据库，不联网。</p>
 <p><strong>返回内容：</strong> node_id/labels/effective/excluded/requires_confirmation，直接JSON。</p>
-<p><a href="../../usage/labels/">使用指南</a> · <a href="https://github.com/Arealtxh/AITrade/blob/9b2aa6dd37b26913e84beb5b38b4136255fa1fd1/aitrade/cli.py#L868">实现源码</a></p>
+<p><a href="../../usage/labels/">使用指南</a> · <a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/aitrade/cli.py#L919">实现源码</a></p>
 <table>
 <thead>
 <tr>
@@ -2275,7 +2365,7 @@
 <p>依据已有计数生成待确认标签。</p>
 <p><strong>副作用：</strong> 默认写标签；只有显式--dry-run才不保存，不自动升级为人工事实。</p>
 <p><strong>返回内容：</strong> dry_run/requires_confirmation/labels，直接JSON。</p>
-<p><a href="../../usage/labels/">使用指南</a> · <a href="https://github.com/Arealtxh/AITrade/blob/9b2aa6dd37b26913e84beb5b38b4136255fa1fd1/aitrade/cli.py#L893">实现源码</a></p>
+<p><a href="../../usage/labels/">使用指南</a> · <a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/aitrade/cli.py#L944">实现源码</a></p>
 <table>
 <thead>
 <tr>
@@ -2316,7 +2406,7 @@
 <p>比较同合约两个已存快照。</p>
 <p><strong>副作用：</strong> 读数据库；未同时入榜的余额差保持未知。</p>
 <p><strong>返回内容：</strong> before/after及rows等差异字段，直接JSON，以源码为准。</p>
-<p><a href="../../usage/holders/#diff">使用指南</a> · <a href="https://github.com/Arealtxh/AITrade/blob/9b2aa6dd37b26913e84beb5b38b4136255fa1fd1/aitrade/cli.py#L926">实现源码</a></p>
+<p><a href="../../usage/holders/#diff">使用指南</a> · <a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/aitrade/cli.py#L977">实现源码</a></p>
 <table>
 <thead>
 <tr>
@@ -2345,7 +2435,7 @@
 <p>按UCID读取各合约最新已存快照。</p>
 <p><strong>副作用：</strong> 读数据库；不重新采集、不偷偷修正历史身份。</p>
 <p><strong>返回内容：</strong> ucid/snapshots，包含来源、status、taken_at与holders，直接JSON。</p>
-<p><a href="../../usage/holders/#query">使用指南</a> · <a href="https://github.com/Arealtxh/AITrade/blob/9b2aa6dd37b26913e84beb5b38b4136255fa1fd1/aitrade/cli.py#L943">实现源码</a></p>
+<p><a href="../../usage/holders/#query">使用指南</a> · <a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/aitrade/cli.py#L994">实现源码</a></p>
 <table>
 <thead>
 <tr>
@@ -2368,7 +2458,7 @@
 <p>按保留数量删除旧持仓快照。</p>
 <p><strong>副作用：</strong> 删除业务历史，必须单独授权，不是只读查询。</p>
 <p><strong>返回内容：</strong> deleted_snapshots。</p>
-<p><a href="../../development/operations/">使用指南</a> · <a href="https://github.com/Arealtxh/AITrade/blob/9b2aa6dd37b26913e84beb5b38b4136255fa1fd1/aitrade/cli.py#L997">实现源码</a></p>
+<p><a href="../../development/operations/">使用指南</a> · <a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/aitrade/cli.py#L1048">实现源码</a></p>
 <table>
 <thead>
 <tr>

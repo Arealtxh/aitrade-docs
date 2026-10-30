@@ -601,6 +601,33 @@
   
   
     <li class="md-nav__item">
+      <a href="./usage/signals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  本地关联信号
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="./usage/labels/" class="md-nav__link">
         
   
@@ -1361,8 +1388,8 @@
 
 <h1 id="aitrade">AITrade：先了解能做什么<a class="headerlink" href="#aitrade" title="Permanent link">&para;</a></h1>
 <p>本站提供公开的静态技术说明，不连接业务数据库或执行页面中的命令。业务源码与历史原件仍在私有仓库，指向GitHub的源码、测试和历史SHA链接需要相应仓库权限；站内使用说明、接口参考及搜索可直接阅读。</p>
-<p>AITrade 从 CMC 的 <strong>UCID 代币集合</strong>出发，解析链上真实部署者、保存持仓快照并维护地址标签。后续目标是关联信号、实体聚类和项目方线索；这些目标不能当作今天已经提供的功能。</p>
-<p>业务事实核对基线：<code>3ccfc2bcb7eb1cb697772b8759570f92168377d7</code>（2026-10-29）。本站构建提交：<code>9b2aa6dd37b26913e84beb5b38b4136255fa1fd1</code>。本地工作树预览可能包含未提交内容；检查与CI回执以最终推送提交为准。数据规模是有日期的历史结果，不是实时数据库统计。</p>
+<p>AITrade从CMC的<strong>UCID代币集合</strong>出发，解析真实部署者、保存持仓快照并维护地址标签；M4a提供已有数据的本地关联。交易类关联、实体聚类和项目方线索按后续阶段实现。</p>
+<p>既有M3业务事实核对基线：<code>3ccfc2bcb7eb1cb697772b8759570f92168377d7</code>（2026-10-29）。M4a源码能力及本站构建提交：<code>df0f59157892a9bc919812b3f76eca52e09e1213</code>；源码新增0007不代表正式库已升级。本地工作树预览可能包含未提交内容；检查与CI回执以最终推送提交为准。数据规模是有日期的历史结果，不是实时数据库统计。</p>
 <h2 id="_1">我该从哪里读<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -1430,8 +1457,8 @@
 </tr>
 <tr>
 <td>关联信号（M4）</td>
-<td>规划</td>
-<td>尚无正式signals命令/算法交付</td>
+<td>M4a本地三信号</td>
+<td><a href="usage/signals/">相同部署者、社交关联、跨币持仓重叠</a>；交易/P1和正式激活另列</td>
 </tr>
 <tr>
 <td>聚类、实体、报表（M5）</td>

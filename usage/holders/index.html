@@ -17,7 +17,7 @@
         <link rel="prev" href="../tokens/">
       
       
-        <link rel="next" href="../labels/">
+        <link rel="next" href="../signals/">
       
       
         
@@ -624,6 +624,33 @@
   
 </nav>
       
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../signals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  本地关联信号
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -1429,7 +1456,7 @@
 <p>把<code>999</code>换成已有UCID。它读取这个UCID各支持链/合约<strong>已经保存的最新快照</strong>，按rank列出持仓，不向链上重新请求。</p>
 <p>“最新”是数据库中<code>is_latest=true</code>，不是“此刻链上余额”。每次保存的是一次观察快照，<code>taken_at</code>是记录时间；<code>block_number</code>只在来源有证据时填写，不能仅凭分页结束认定同区块一致。</p>
 <h2 id="result">如何读结果<a class="headerlink" href="#result" title="Permanent link">&para;</a></h2>
-<p>下面为<strong>合成示例</strong>，按<a href="https://github.com/Arealtxh/AITrade/blob/9b2aa6dd37b26913e84beb5b38b4136255fa1fd1/tests/integration/test_m3_cli.py">M3 CLI测试Fixture</a>的UCID999、ethereum、100/1000余额场景构造；时间和ID仅用于说明，未执行生产命令。</p>
+<p>下面为<strong>合成示例</strong>，按<a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/tests/integration/test_m3_cli.py">M3 CLI测试Fixture</a>的UCID999、ethereum、100/1000余额场景构造；时间和ID仅用于说明，未执行生产命令。</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nt">"ucid"</span><span class="p">:</span><span class="w"> </span><span class="mi">999</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">"snapshots"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span>
@@ -1495,10 +1522,10 @@
     C-&gt;&gt;D: 按UCID查各合约最新已存快照
     D--&gt;&gt;C: 快照及rank排序的holders
     C--&gt;&gt;U: JSON（不重新采集）</code></pre>
-<p><a href="https://github.com/Arealtxh/AITrade/blob/9b2aa6dd37b26913e84beb5b38b4136255fa1fd1/aitrade/services/holders.py">HolderService</a> · <a href="https://github.com/Arealtxh/AITrade/blob/9b2aa6dd37b26913e84beb5b38b4136255fa1fd1/aitrade/cli.py">CLI实现</a> · <a href="https://github.com/Arealtxh/AITrade/blob/9b2aa6dd37b26913e84beb5b38b4136255fa1fd1/tests/integration/test_m3_storage.py">持久化与差异测试</a> · <a href="https://github.com/Arealtxh/AITrade/blob/9b2aa6dd37b26913e84beb5b38b4136255fa1fd1/tests/integration/test_m3_identity_concurrency.py">身份/并发回归</a> · <a href="../../reference/schema/#holder_snapshots">表与字段</a></p>
+<p><a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/aitrade/services/holders.py">HolderService</a> · <a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/aitrade/cli.py">CLI实现</a> · <a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/tests/integration/test_m3_storage.py">持久化与差异测试</a> · <a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/tests/integration/test_m3_identity_concurrency.py">身份/并发回归</a> · <a href="../../reference/schema/#holder_snapshots">表与字段</a></p>
 <h2 id="_2">为什么这样设计<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>历史余额与供应量随快照冻结，latest只是每个合约的当前选择；保留多次观察才能比较。陌生EVM持仓先以链节点记录，仅当前链有效代码证据才支持复用全局EOA，已知链合约优先。读取不偷偷更正历史；正式数据影响审计与修复另行授权。</p>
-<p>依据：<a href="https://github.com/Arealtxh/AITrade/blob/9b2aa6dd37b26913e84beb5b38b4136255fa1fd1/docs/ADR.md#L385">ADR-039</a>（M3实现）、<a href="https://github.com/Arealtxh/AITrade/blob/9b2aa6dd37b26913e84beb5b38b4136255fa1fd1/docs/ADR.md#L606">ADR-063</a>（有效覆盖与完整率分列）、<a href="https://github.com/Arealtxh/AITrade/blob/9b2aa6dd37b26913e84beb5b38b4136255fa1fd1/docs/ADR.md#L1142">ADR-136</a>（当前链身份与标签事务）。</p>
+<p>依据：<a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/docs/ADR.md#L385">ADR-039</a>（M3实现）、<a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/docs/ADR.md#L606">ADR-063</a>（有效覆盖与完整率分列）、<a href="https://github.com/Arealtxh/AITrade/blob/df0f59157892a9bc919812b3f76eca52e09e1213/docs/ADR.md#L1142">ADR-136</a>（当前链身份与标签事务）。</p>
 
 
 
