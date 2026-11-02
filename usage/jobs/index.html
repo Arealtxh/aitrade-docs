@@ -1471,11 +1471,11 @@ uv<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </sp
 </ul>
 <p>这些入口只作说明，本手册不授予执行权限。<a href="../../reference/cli/#jobs-enqueue">实际参数/默认值</a>。</p>
 <h2 id="_4">如何实现<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<p><a href="https://github.com/Arealtxh/AITrade/blob/4717bde0ed8be537fb719cffc2fd03f6a0e00432/aitrade/jobs/queue.py">JobQueue</a>负责排队、领取和状态迁移；<a href="https://github.com/Arealtxh/AITrade/blob/4717bde0ed8be537fb719cffc2fd03f6a0e00432/aitrade/jobs/worker.py">Worker</a>负责并发、心跳与回收；<a href="https://github.com/Arealtxh/AITrade/blob/4717bde0ed8be537fb719cffc2fd03f6a0e00432/aitrade/jobs/handlers.py">handlers</a>把任务交给统一services。来源HTTP、重试、速率与额度通过core组件控制。</p>
-<p><a href="../../reference/schema/#jobs">任务字段</a> · <a href="https://github.com/Arealtxh/AITrade/blob/4717bde0ed8be537fb719cffc2fd03f6a0e00432/tests/integration/test_queue.py">队列测试</a> · <a href="../../architecture/code-map/">代码地图</a></p>
+<p><a href="https://github.com/Arealtxh/AITrade/blob/e1f3a4d59801d526d51ab018329ca734fa3e9578/aitrade/jobs/queue.py">JobQueue</a>负责排队、领取和状态迁移；<a href="https://github.com/Arealtxh/AITrade/blob/e1f3a4d59801d526d51ab018329ca734fa3e9578/aitrade/jobs/worker.py">Worker</a>负责并发、心跳与回收；<a href="https://github.com/Arealtxh/AITrade/blob/e1f3a4d59801d526d51ab018329ca734fa3e9578/aitrade/jobs/handlers.py">handlers</a>把任务交给统一services。来源HTTP、重试、速率与额度通过core组件控制。</p>
+<p><a href="../../reference/schema/#jobs">任务字段</a> · <a href="https://github.com/Arealtxh/AITrade/blob/e1f3a4d59801d526d51ab018329ca734fa3e9578/tests/integration/test_queue.py">队列测试</a> · <a href="../../architecture/code-map/">代码地图</a></p>
 <h2 id="_5">为什么这样设计<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <p>队列把长耗时采集与终端查看分开，错误和部分结果可追溯；额度记账落在source_quota，进程重启不等于预算重新开始。历史claim也不能因为换了worker而复用。</p>
-<p>依据：<a href="https://github.com/Arealtxh/AITrade/blob/4717bde0ed8be537fb719cffc2fd03f6a0e00432/docs/ADR.md#L21">ADR-006</a>、<a href="https://github.com/Arealtxh/AITrade/blob/4717bde0ed8be537fb719cffc2fd03f6a0e00432/docs/ADR.md#L41">ADR-011</a>、<a href="https://github.com/Arealtxh/AITrade/blob/4717bde0ed8be537fb719cffc2fd03f6a0e00432/docs/ADR.md#L1122">ADR-134</a>。正式迁移/导入完成不表示允许继续采集，当前来源研究结束的边界仍有效。</p>
+<p>依据：<a href="https://github.com/Arealtxh/AITrade/blob/e1f3a4d59801d526d51ab018329ca734fa3e9578/docs/ADR.md#L21">ADR-006</a>、<a href="https://github.com/Arealtxh/AITrade/blob/e1f3a4d59801d526d51ab018329ca734fa3e9578/docs/ADR.md#L41">ADR-011</a>、<a href="https://github.com/Arealtxh/AITrade/blob/e1f3a4d59801d526d51ab018329ca734fa3e9578/docs/ADR.md#L1122">ADR-134</a>。正式迁移/导入完成不表示允许继续采集，当前来源研究结束的边界仍有效。</p>
 
 
 
